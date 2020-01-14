@@ -12,6 +12,7 @@ from TD3.agent.TD3_agent import TD3Agent
 from TD3.model.twin_ac_model import Actor, TwinCritic
 from TD3.replay_buffers.replay_buffer import ReplayBuffer
 from multi_agent.multi_agent import MultiAgent
+from utils import log
 
 
 def eval_agent(brain_name, agent, n_episodes=1000, max_t=1000, print_every=100, slow_and_pretty=True):
