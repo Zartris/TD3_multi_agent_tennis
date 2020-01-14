@@ -24,44 +24,15 @@ class MultiAgent(AgentBase):
     def step(self, states, actions, rewards, next_states, dones):
         """Save experience in replay memory, and uses samples from buffer to learn."""
         self.total_steps += 1
-        for idx, (state, action, reward, next_state, done) in enumerate(
-                zip(states, actions, rewards, next_states, dones)):
-            self.add_to_memory(state, action, reward, next_state, done, agent_idx=idx)
-
-        if self.shared_memory.is_full_enough():
-            
-        pass
-
-    def step(self, states, actions, rewards, next_states, dones):
-        """Save experience in replay memory, and use random sample from buffer to learn."""
-        self.step_count += 1
-        # Save experience / reward
-        agent_idx = 0  # This is needed if we are ever to use N-step but currently just here for nothing
-        for state, action, reward, next_state, done in zip(states, actions, rewards, next_states, dones):
-            self.memory.add(agent_idx, state, action, reward, next_state, done)
-            agent_idx += 1
-
-        # Time to train.
-        # We want to train the critics every step but delay the actor update for self.train_delay of time.
-        # Learn, if enough samples are available in memory
-
-        if self.step_count % self.steps_before_train == 0:
-            self.step_count = 0
-            if len(self.memory) > self.batch_size:
-                for _ in range(self.train_iterations):
-                    self.learn()
-
-    def learn(self):
-        """
-        !Only supports normal Replay buffer!
-        :return:
-        """
-        for agent in self.agents:
-            idxs, experiences, is_weights = self.shared_memory.sample()
-            agent.learn(experiences)
+        for idx, (agent, state, action, reward, next_state, done) in enumerate(
+                zip(self.agents, states, actions, rewards, next_states, dones)):
+            # self.add_to_memory(state, action, reward, next_state, done, agent_idx=idx)
+            agent.step(state, action, reward, next_state, done)
+        # for agent in self.agents:
+        #     agent.step(self.shared_memory)
 
     def reset(self):
-        for agent in self.agent:
+        for agent in self.agents:
             agent.reset()
 
     def add_to_memory(self, state, action, reward, next_state, done, agent_idx=None, error=None):

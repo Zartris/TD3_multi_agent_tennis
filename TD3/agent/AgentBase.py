@@ -19,7 +19,7 @@ class AgentBase:
         if self.save_path is None:
             self.save_path = Path(os.getcwd(), "..", "save_folder", get_time_str())
 
-        self.logger = get_logger(tag=self.name, log_level=log_level)
+        #self.logger = get_logger(tag=self.name, log_level=log_level)
 
         # Agent options
         self.state_normalizer = state_normalizer

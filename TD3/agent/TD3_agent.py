@@ -1,6 +1,3 @@
-import copy
-
-import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
@@ -21,8 +18,10 @@ class TD3Agent(AgentBase):
 
     def __init__(self,
                  agent_name: str,
-                 actor: nn.Module,
-                 twin_critic: nn.Module,
+                 actor_func,
+                 twin_critic,
+                 twin_critic_target,
+                 replay_buffer,
                  action_size: int,
                  action_val_high: float,
                  action_val_low: float,
@@ -40,7 +39,9 @@ class TD3Agent(AgentBase):
                  weight_decay: float = 1e-6,
                  policy_noise: float = 0.2,
                  noise_clip: float = 0.5,
-                 exploration_noise: float = 0.1):
+                 exploration_noise: float = 0.3,
+                 noise_reduction_factor: float = 0.99,
+                 noise_scalar_init: float = 2.0):
         """Initialize an Agent object.
         Params
         ======
@@ -56,18 +57,21 @@ class TD3Agent(AgentBase):
         self.action_val_low = action_val_low
 
         # Actor Network (w/ Target Network)
-        self.actor = actor.to(self.device)
-        self.actor_target = copy.deepcopy(actor).to(self.device)
+        self.actor = actor_func().to(self.device)
+        self.actor_target = actor_func().to(self.device)
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=lr_actor)
 
         # Using Twin Critic Network (w/ Target Network), we are combining the two critics into the same network
-        self.twin_critic = twin_critic.to(self.device)
-        self.twin_critic_target = copy.deepcopy(twin_critic).to(self.device)
+        self.twin_critic = twin_critic
+        self.twin_critic_target = twin_critic_target()
         self.critic_optimizer = optim.Adam(self.twin_critic.parameters(), lr=lr_critic,
                                            weight_decay=weight_decay)
 
         # Learning count:
         self.train_count = 0
+
+        # Replay buffer:
+        self.memory = replay_buffer
 
         # Amount of training rounds:
         self.train_delay = train_delay
@@ -80,6 +84,12 @@ class TD3Agent(AgentBase):
         self.policy_noise = policy_noise
         self.noise_clip = noise_clip
         self.exploration_noise = exploration_noise
+        self.noise_reduction_factor = noise_reduction_factor
+        self.noise_scalar_init = noise_scalar_init
+        self.noise_scalar = noise_scalar_init
+
+    def reset(self):
+        self.noise_scalar = self.noise_scalar_init
 
     def act(self, states, add_noise=True):
         """Returns actions for given state as per current policy."""
@@ -89,9 +99,35 @@ class TD3Agent(AgentBase):
             actions = self.actor(states).cpu().data.numpy()
         self.actor.train()
         if add_noise:
-            # OBSERVATION: Use gaussian noise instead of OUNoise, this improve performance a lot!
-            actions += np.random.normal(0, self.action_val_high * self.exploration_noise, self.action_size)
+            actions += np.random.normal(0, self.action_val_high * self.exploration_noise,
+                                        self.action_size) * self.noise_scalar
+            self.noise_scalar *= self.noise_reduction_factor
         return np.clip(actions, self.action_val_low, self.action_val_high)
+
+    def step(self, state, action, reward, next_state, done):
+        """Save experience in replay memory, and use random sample from buffer to learn."""
+        self.total_steps += 1
+        self.memory.add(state, action, reward, next_state, done)
+        # Time to train.
+        # We want to train the critics every step but delay the actor update for self.train_delay of time.
+        # Learn, if enough samples are available in memory
+        if self.memory.is_full_enough():
+            if self.total_steps % self.steps_before_train == 0:
+                for _ in range(self.train_iterations):
+                    idxs, experiences, is_weights = self.memory.sample()
+                    self.learn(experiences)
+
+    def step_shared(self, shared_memory):
+        """Save experience in replay memory, and use random sample from buffer to learn."""
+        self.total_steps += 1
+        # Time to train.
+        # We want to train the critics every step but delay the actor update for self.train_delay of time.
+        # Learn, if enough samples are available in memory
+        if shared_memory.is_full_enough():
+            if self.total_steps % self.steps_before_train == 0:
+                for _ in range(self.train_iterations):
+                    idxs, experiences, is_weights = shared_memory.sample()
+                    self.learn(experiences)
 
     def learn(self, experiences):
         """Update policy and value parameters using given batch of experience tuples.
