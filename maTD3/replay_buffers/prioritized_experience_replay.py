@@ -3,8 +3,8 @@ from collections import namedtuple
 import numpy as np
 import torch
 
-from TD3.replay_buffers.RB_base import RBBase
-from TD3.replay_buffers.sumtree import SumTree
+from maTD3.replay_buffers.RB_base import RBBase
+from maTD3.replay_buffers.sumtree import SumTree
 
 
 class PrioritizedReplayBuffer(RBBase):

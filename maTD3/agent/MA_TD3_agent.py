@@ -1,10 +1,10 @@
 import torch.nn.functional as F
 import torch.optim as optim
 
-from TD3.agent.AgentBase import AgentBase
-from TD3.model.twin_ac_model import TwinCritic, TD3Actor
-from TD3.replay_buffers.replay_buffer import ReplayBuffer
-from TD3.utils import *
+from maTD3.agent.AgentBase import AgentBase
+from maTD3.model.twin_ac_model import TwinCritic, TD3Actor
+from maTD3.replay_buffers.replay_buffer import ReplayBuffer
+from maTD3.utils import *
 
 N_STEP = 3
 
@@ -13,7 +13,7 @@ N_STEP = 3
 # PER           https://arxiv.org/pdf/1707.08817.pdf
 # TD3 medium:   https://towardsdatascience.com/td3-learning-to-run-with-ai-40dfc512f93
 # TD3 Extra:    https://spinningup.openai.com/en/latest/algorithms/td3.html#background
-class TD3Agent(AgentBase):
+class MATD3Agent(AgentBase):
     """Interacts with and learns from the environment."""
 
     def __init__(self,
@@ -21,6 +21,7 @@ class TD3Agent(AgentBase):
                  actor_func,
                  twin_critic,
                  twin_critic_target,
+                 critic_optimizer,
                  replay_buffer,
                  action_size: int,
                  action_val_high: float,
@@ -35,8 +36,6 @@ class TD3Agent(AgentBase):
                  discount: float = 0.99,
                  tau: float = 1e-3,
                  lr_actor: float = 4e-4,
-                 lr_critic: float = 4e-4,
-                 weight_decay: float = 1e-6,
                  policy_noise: float = 0.2,
                  noise_clip: float = 0.5,
                  exploration_noise: float = 0.3,
@@ -63,9 +62,8 @@ class TD3Agent(AgentBase):
 
         # Using Twin Critic Network (w/ Target Network), we are combining the two critics into the same network
         self.twin_critic = twin_critic
-        self.twin_critic_target = twin_critic_target()
-        self.critic_optimizer = optim.Adam(self.twin_critic.parameters(), lr=lr_critic,
-                                           weight_decay=weight_decay)
+        self.twin_critic_target = twin_critic_target
+        self.critic_optimizer = critic_optimizer
 
         # Learning count:
         self.train_count = 0
@@ -80,7 +78,6 @@ class TD3Agent(AgentBase):
         self.discount = discount
         self.tau = tau
         self.lr_actor = lr_actor
-        self.lr_critic = lr_critic
         self.policy_noise = policy_noise
         self.noise_clip = noise_clip
         self.exploration_noise = exploration_noise
@@ -146,20 +143,20 @@ class TD3Agent(AgentBase):
         # ---------------------------- update critic ---------------------------- #
         # Compute the Target Q (min of Q1 and Q2)
         # TODO: Question, is this nessary? we are never using the gradient anyway. Sure for performance.
-        with torch.no_grad():
-            # performing policy smooth, by adding noise, to reduce variance.
-            noise = (torch.randn_like(actions) * self.policy_noise)
-            # clamping the noise to keep the target value close to original action
-            noise = noise.clamp(-self.noise_clip, self.noise_clip)
-            # using actor target to get next state and add noise
-            next_actions = (self.actor_target(next_states) + noise)
-            # claping to make sure they are within action value range
-            next_actions = next_actions.clamp(self.action_val_low, self.action_val_high)
+        # with torch.no_grad():
+        # performing policy smooth, by adding noise, to reduce variance.
+        noise = (torch.randn_like(actions) * self.policy_noise)
+        # clamping the noise to keep the target value close to original action
+        noise = noise.clamp(-self.noise_clip, self.noise_clip)
+        # using actor target to get next state and add noise
+        next_actions = (self.actor_target(next_states) + noise)
+        # claping to make sure they are within action value range
+        next_actions = next_actions.clamp(self.action_val_low, self.action_val_high)
 
-            # Compute the target Q value:
-            Q1_targets, Q2_targets = self.twin_critic_target(next_states, next_actions)
-            target_Q = torch.min(Q1_targets, Q2_targets)
-            target_Q = rewards + (self.discount * target_Q * (1 - dones))
+        # Compute the target Q value:
+        Q1_targets, Q2_targets = self.twin_critic_target(next_states, next_actions)
+        target_Q = torch.min(Q1_targets, Q2_targets)
+        target_Q = rewards + (self.discount * target_Q * (1 - dones))
 
         # Compute critic loss
         expected_Q1, expected_Q2 = self.twin_critic(states, actions)  # let it compute gradient
@@ -221,9 +218,9 @@ if __name__ == '__main__':
     replay_buffer = ReplayBuffer(action_size, buffer_size, batch_size, seed)
     actor = TD3Actor(state_size, action_size, seed, max_action=action_val_max, fc1_units=400, fc2_units=300)
     twin_critic = TwinCritic(state_size, action_size, seed, fc1_units=400, fc2_units=300)
-    agent = TD3Agent(agent_name="TD3_agent",
-                     actor=actor,
-                     twin_critic=twin_critic,
-                     action_size=action_size,
-                     action_val_high=action_val_max,
-                     action_val_low=action_val_min)
+    agent = MATD3Agent(agent_name="TD3_agent",
+                       actor=actor,
+                       twin_critic=twin_critic,
+                       action_size=action_size,
+                       action_val_high=action_val_max,
+                       action_val_low=action_val_min)

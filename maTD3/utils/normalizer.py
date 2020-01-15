@@ -6,7 +6,7 @@
 import numpy as np
 import torch
 
-from TD3.utils.common.running_mean_std import RunningMeanStd
+from maTD3.utils.common.running_mean_std import RunningMeanStd
 
 
 class BaseNormalizer:

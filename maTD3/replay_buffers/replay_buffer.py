@@ -4,7 +4,7 @@ from collections import deque, namedtuple
 import numpy as np
 import torch
 
-from TD3.replay_buffers.RB_base import RBBase
+from maTD3.replay_buffers.RB_base import RBBase
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 

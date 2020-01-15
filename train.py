@@ -6,13 +6,15 @@ from functools import partial
 from pathlib import Path
 
 import numpy as np
+import torch
 from tensorboardX import SummaryWriter
+from torch import optim
 from unityagents import UnityEnvironment
 
-from TD3.agent.TD3_agent import TD3Agent
-from TD3.model.twin_ac_model import Actor, TwinCritic
-from TD3.replay_buffers.replay_buffer import ReplayBuffer
-from multi_agent.multi_agent import MultiAgent
+from maTD3.agent.MA_TD3_agent import MATD3Agent
+from maTD3.agent.multi_agent import MultiAgent
+from maTD3.model.twin_ac_model import Actor, TwinCritic
+from maTD3.replay_buffers.replay_buffer import ReplayBuffer
 from utils import log
 
 
@@ -53,6 +55,7 @@ def eval_agent(brain_name, agent, n_episodes=1000, max_t=1000, print_every=100, 
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_deque)))
     return scores
 
+
 # http://localhost:8888/notebooks/Tennis.ipynb#
 def train_agent(brain_name, agent, action_size, n_episodes=1000, max_t=1000, file="", logging_folder="",
                 log_every=5,
@@ -77,7 +80,7 @@ def train_agent(brain_name, agent, action_size, n_episodes=1000, max_t=1000, fil
             states = next_states
             if np.any(dones):
                 break
-    current_best = 0.03
+    current_best = 0.1
     beaten = False
     for i_episode in range(1, n_episodes + 1):
         env_info = env.reset(train_mode=not slow_and_pretty)[brain_name]  # reset the environment
@@ -115,10 +118,11 @@ def train_agent(brain_name, agent, action_size, n_episodes=1000, max_t=1000, fil
         logging_buffer += "\t" + log_str + "\n"
         print("\r" + log_str,
               end="")
-        if avg_score > current_best:
-            log_str = "\nAt episode {} the current best {} has been beaten by {}, so we save the model".format(i_episode,
-                                                                                                             current_best,
-                                                                                                             avg_score)
+        if avg_score > round(current_best + 0.01, 3):
+            log_str = "\nAt episode {} the current best {:.2f} has been beaten by {:.2f}, so we save the model".format(
+                i_episode,
+                current_best,
+                avg_score)
             print(log_str)
             logging_buffer += log_str
             current_best = avg_score
@@ -142,11 +146,11 @@ if __name__ == '__main__':
     parser.add_argument("--seed", default=0, type=int)  # The seed for testing
     parser.add_argument("--max_timesteps", default=2000, type=int)  # Max time per episode
     parser.add_argument("--episodes", default=4000, type=int)  # Number of episodes to train for
-    parser.add_argument("--batch_size", default=512, type=int)  # Batch size for training
+    parser.add_argument("--batch_size", default=1024, type=int)  # Batch size for training
     parser.add_argument("--buffer_size", default=2 ** 20, type=int)  # Batch size for training
     parser.add_argument("--discount", default=0.99)  # Discount factor
     parser.add_argument("--tau", default=1e-3)  # Soft update factor
-    parser.add_argument("--lr_actor", default=1e-3)  # Optimizer learning rate for the actor
+    parser.add_argument("--lr_actor", default=1e-4)  # Optimizer learning rate for the actor
     parser.add_argument("--lr_critic", default=1e-3)  # Optimizer learning rate for the critic
     parser.add_argument("--warmup_rounds", default=0)  # Optimizer learning rate for the critic
     parser.add_argument("--weight_decay", default=0)  # Optimizer learning rate for the critic
@@ -157,7 +161,7 @@ if __name__ == '__main__':
     parser.add_argument("--noise_scalar_init", default=2)  # initialise noise at start of each episode
     parser.add_argument("--train_delay", default=2, type=int)  # Frequency of delayed policy updates
     parser.add_argument("--steps_before_train", default=4, type=int)  # Steps taken between train calls.
-    parser.add_argument("--train_iterations", default=2, type=int)  # number of batches trained on per train call
+    parser.add_argument("--train_iterations", default=1, type=int)  # number of batches trained on per train call
     parser.add_argument("--result_folder", default=os.path.join(os.getcwd(), "results"))
     parser.add_argument("--load_model_path", default="")  # If should load model: if "" don't load anything
     parser.add_argument("--eval", default=False, type=bool)  # If we only want to evaluate a model.
@@ -216,39 +220,42 @@ if __name__ == '__main__':
         model_dir = Path(os.getcwd(), "results", "solved")
         eval = True
 
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
     replay_buffer = ReplayBuffer(action_size, args.buffer_size, args.batch_size, seed=args.seed)
     agents = []
     actor_func = partial(Actor, state_size=state_size, action_size=action_size, seed=args.seed, fc1_units=256,
                          fc2_units=128)
     # Shares critic along all agents
     twin_critic = TwinCritic(state_size=state_size, action_size=action_size, seed=args.seed,
-                               fc1_units=256, fc2_units=128)
+                             fc1_units=256, fc2_units=128).to(device=device)
     twin_critic_target = TwinCritic(state_size=state_size, action_size=action_size, seed=args.seed,
-                             fc1_units=256, fc2_units=128)
+                                    fc1_units=256, fc2_units=128).to(device=device)
+    critic_optimizer = optim.Adam(twin_critic.parameters(), lr=args.lr_critic,
+                                  weight_decay=args.weight_decay)
     for i in range(1, num_agents + 1):
-        agents.append(TD3Agent("TD3Agent" + str(i),
-                               actor_func=actor_func,
-                               twin_critic=twin_critic,
-                               twin_critic_target=twin_critic_target,
-                               replay_buffer=replay_buffer,
-                               action_size=action_size,
-                               action_val_high=action_val_high,
-                               action_val_low=action_val_low,
-                               save_path=model_dir,
-                               seed=args.seed,
-                               train_delay=args.train_delay,
-                               steps_before_train=args.steps_before_train,
-                               train_iterations=args.train_iterations,
-                               discount=args.discount,
-                               tau=args.tau,
-                               lr_actor=args.lr_actor,
-                               lr_critic=args.lr_critic,
-                               weight_decay=args.weight_decay,
-                               policy_noise=args.policy_noise,
-                               noise_clip=args.noise_clip,
-                               exploration_noise=args.exploration_noise,
-                               noise_reduction_factor=args.noise_reduction_factor,
-                               noise_scalar_init=args.noise_scalar_init))
+        agents.append(MATD3Agent("MATD3Agent" + str(i),
+                                 actor_func=actor_func,
+                                 twin_critic=twin_critic,
+                                 twin_critic_target=twin_critic_target,
+                                 critic_optimizer=critic_optimizer,
+                                 replay_buffer=replay_buffer,
+                                 action_size=action_size,
+                                 action_val_high=action_val_high,
+                                 action_val_low=action_val_low,
+                                 save_path=model_dir,
+                                 seed=args.seed,
+                                 train_delay=args.train_delay,
+                                 steps_before_train=args.steps_before_train,
+                                 train_iterations=args.train_iterations,
+                                 discount=args.discount,
+                                 tau=args.tau,
+                                 lr_actor=args.lr_actor,
+                                 policy_noise=args.policy_noise,
+                                 noise_clip=args.noise_clip,
+                                 exploration_noise=args.exploration_noise,
+                                 noise_reduction_factor=args.noise_reduction_factor,
+                                 noise_scalar_init=args.noise_scalar_init))
     agent = MultiAgent("MultiAgent",
                        agents=agents,
                        shared_replay_buffer=replay_buffer,

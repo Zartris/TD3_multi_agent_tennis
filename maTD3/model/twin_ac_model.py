@@ -129,9 +129,9 @@ class TwinCritic(nn.Module):
         self.critic1 = nn.Sequential(
             self.c1_fc1,
             self.c1_bn1,
-            nn.ReLU(),
+            nn.LeakyReLU(),
             self.c1_fc2,
-            nn.ReLU(),
+            nn.LeakyReLU(),
             self.c1_fc3
         )
 
@@ -143,9 +143,9 @@ class TwinCritic(nn.Module):
         self.critic2 = nn.Sequential(
             self.c2_fc1,
             self.c2_bn1,
-            nn.ReLU(),
+            nn.LeakyReLU(),
             self.c2_fc2,
-            nn.ReLU(),
+            nn.LeakyReLU(),
             self.c2_fc3
         )
 

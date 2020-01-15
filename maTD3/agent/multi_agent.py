@@ -1,5 +1,5 @@
-from TD3.agent.AgentBase import AgentBase
-from TD3.utils import *
+from maTD3.agent.AgentBase import AgentBase
+from maTD3.utils import *
 
 
 class MultiAgent(AgentBase):

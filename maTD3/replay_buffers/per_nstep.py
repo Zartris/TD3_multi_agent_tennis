@@ -2,7 +2,7 @@ from collections import namedtuple, deque
 
 import torch
 
-from TD3.replay_buffers.prioritized_experience_replay import PrioritizedReplayBuffer
+from maTD3.replay_buffers.prioritized_experience_replay import PrioritizedReplayBuffer
 
 
 class PerNStep(PrioritizedReplayBuffer):
