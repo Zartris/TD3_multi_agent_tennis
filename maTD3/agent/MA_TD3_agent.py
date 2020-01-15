@@ -2,7 +2,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 from maTD3.agent.AgentBase import AgentBase
-from maTD3.model.twin_ac_model import TwinCritic, TD3Actor
+from maTD3.model.twin_ac_model import TwinCritic, TD3Actor, Critic
 from maTD3.replay_buffers.replay_buffer import ReplayBuffer
 from maTD3.utils import *
 
@@ -15,13 +15,19 @@ N_STEP = 3
 # TD3 Extra:    https://spinningup.openai.com/en/latest/algorithms/td3.html#background
 class MATD3Agent(AgentBase):
     """Interacts with and learns from the environment."""
+    # Shared crtic among all agents
+    shared_critic1 = None
+    shared_critic1_target = None
+    shared_critic1_optimizer = None
+
+    shared_critic2 = None
+    shared_critic2_target = None
+    shared_critic2_optimizer = None
 
     def __init__(self,
                  agent_name: str,
                  actor_func,
-                 twin_critic,
-                 twin_critic_target,
-                 critic_optimizer,
+                 state_size,
                  replay_buffer,
                  action_size: int,
                  action_val_high: float,
@@ -36,6 +42,7 @@ class MATD3Agent(AgentBase):
                  discount: float = 0.99,
                  tau: float = 1e-3,
                  lr_actor: float = 4e-4,
+                 lr_critic: float = 1e-3,
                  policy_noise: float = 0.2,
                  noise_clip: float = 0.5,
                  exploration_noise: float = 0.3,
@@ -61,9 +68,33 @@ class MATD3Agent(AgentBase):
         self.actor_optimizer = optim.Adam(self.actor.parameters(), lr=lr_actor)
 
         # Using Twin Critic Network (w/ Target Network), we are combining the two critics into the same network
-        self.twin_critic = twin_critic
-        self.twin_critic_target = twin_critic_target
-        self.critic_optimizer = critic_optimizer
+        # Critic Network (w/ Target Network)
+        # fcs1_units = 256, fc2_units = 128
+        if MATD3Agent.shared_critic1 is None:
+            MATD3Agent.shared_critic1 = Critic(state_size, action_size, self.seed, fcs1_units=256, fc2_units=128).to(
+                self.device)
+        if MATD3Agent.shared_critic1_target is None:
+            MATD3Agent.shared_critic1_target = Critic(state_size, action_size, self.seed, fcs1_units=256,
+                                                      fc2_units=128).to(self.device)
+            MATD3Agent.shared_critic1_target.load_state_dict(self.shared_critic1.state_dict())
+        if MATD3Agent.shared_critic1_optimizer is None:
+            MATD3Agent.shared_critic1_optimizer = optim.Adam(self.shared_critic1.parameters(), lr=lr_critic)
+        self.shared_critic1 = MATD3Agent.shared_critic1
+        self.shared_critic1_target = MATD3Agent.shared_critic1_target
+        self.shared_critic1_optimizer = MATD3Agent.shared_critic1_optimizer
+
+        if MATD3Agent.shared_critic2 is None:
+            MATD3Agent.shared_critic2 = Critic(state_size, action_size, self.seed, fcs1_units=256, fc2_units=128).to(
+                self.device)
+        if MATD3Agent.shared_critic2_target is None:
+            MATD3Agent.shared_critic2_target = Critic(state_size, action_size, self.seed, fcs1_units=256,
+                                                      fc2_units=128).to(self.device)
+            MATD3Agent.shared_critic2_target.load_state_dict(self.shared_critic2.state_dict())
+        if MATD3Agent.shared_critic2_optimizer is None:
+            MATD3Agent.shared_critic2_optimizer = optim.Adam(self.shared_critic2.parameters(), lr=lr_critic)
+        self.shared_critic2 = MATD3Agent.shared_critic2
+        self.shared_critic2_target = MATD3Agent.shared_critic2_target
+        self.shared_critic2_optimizer = MATD3Agent.shared_critic2_optimizer
 
         # Learning count:
         self.train_count = 0
@@ -142,8 +173,7 @@ class MATD3Agent(AgentBase):
         states, actions, rewards, next_states, dones = experiences
         # ---------------------------- update critic ---------------------------- #
         # Compute the Target Q (min of Q1 and Q2)
-        # TODO: Question, is this nessary? we are never using the gradient anyway. Sure for performance.
-        # with torch.no_grad():
+
         # performing policy smooth, by adding noise, to reduce variance.
         noise = (torch.randn_like(actions) * self.policy_noise)
         # clamping the noise to keep the target value close to original action
@@ -154,26 +184,37 @@ class MATD3Agent(AgentBase):
         next_actions = next_actions.clamp(self.action_val_low, self.action_val_high)
 
         # Compute the target Q value:
-        Q1_targets, Q2_targets = self.twin_critic_target(next_states, next_actions)
+        # Q1_targets, Q2_targets = self.twin_critic_target(next_states, next_actions)
+        Q1_targets = self.shared_critic1_target(next_states, next_actions)
+        Q2_targets = self.shared_critic2_target(next_states, next_actions)
         target_Q = torch.min(Q1_targets, Q2_targets)
-        target_Q = rewards + (self.discount * target_Q * (1 - dones))
+        target_Q = rewards + (self.discount * target_Q * (1 - dones)).detach()
 
         # Compute critic loss
-        expected_Q1, expected_Q2 = self.twin_critic(states, actions)  # let it compute gradient
-        critic_loss = F.mse_loss(expected_Q1, target_Q) + F.mse_loss(expected_Q2, target_Q)
+        # expected_Q1, expected_Q2 = self.twin_critic(states, actions)  # let it compute gradient
+        expected_Q1 = self.shared_critic1(states, actions)
+        expected_Q2 = self.shared_critic2(states, actions)
+        critic_loss = F.mse_loss(expected_Q1, target_Q)
+        critic_loss2 = F.mse_loss(expected_Q2, target_Q)
 
         # Minimize the loss
-        self.critic_optimizer.zero_grad()
+        self.shared_critic1_optimizer.zero_grad()
         critic_loss.backward()
-        torch.nn.utils.clip_grad_norm_(self.twin_critic.parameters(), 1)
-        self.critic_optimizer.step()
+        torch.nn.utils.clip_grad_norm_(self.shared_critic1.parameters(), 1)
+        self.shared_critic1_optimizer.step()
+
+        self.shared_critic2_optimizer.zero_grad()
+        critic_loss2.backward()
+        torch.nn.utils.clip_grad_norm_(self.shared_critic2.parameters(), 1)
+        self.shared_critic2_optimizer.step()
+
         # Delayed training of actor network:
         if self.train_count % self.train_delay == 0:
             # ---------------------------- update actor ---------------------------- #
             self.train_count = 0
             # Compute actor loss
             actions_pred = self.actor(states)
-            actor_loss = -self.twin_critic.Q1(states, actions_pred).mean()  # Minus is for maximizing
+            actor_loss = -self.shared_critic1(states, actions_pred).mean()  # Minus is for maximizing
             # Minimize the loss
             self.actor_optimizer.zero_grad()
             torch.nn.utils.clip_grad_norm_(self.actor.parameters(), 1)
@@ -181,7 +222,8 @@ class MATD3Agent(AgentBase):
             self.actor_optimizer.step()
 
             # ----------------------- update target networks ----------------------- #
-            self.soft_update(self.twin_critic, self.twin_critic_target, self.tau)
+            self.soft_update(self.shared_critic1, self.shared_critic1_target, self.tau)
+            self.soft_update(self.shared_critic2, self.shared_critic2_target, self.tau)
             self.soft_update(self.actor, self.actor_target, self.tau)
 
     def eval_step(self, state):
@@ -192,14 +234,17 @@ class MATD3Agent(AgentBase):
 
     def save_all(self):
         super().save(self.name + "_actor", self.actor)
-        super().save(self.name + "_twin_critic", self.twin_critic)
+        super().save(self.name + "_critic1", self.shared_critic1)
+        super().save(self.name + "_critic2", self.shared_critic2)
         super().save_stats(self.name + "_state_normalizer")
 
     def load_all(self, load_path: Path = None):
         self.actor.load_state_dict(super().load_state_dict(self.name + "_actor", load_path))
         self.actor_target.load_state_dict(super().load_state_dict(self.name + "_actor", load_path))
-        self.twin_critic.load_state_dict(super().load_state_dict(self.name + "_twin_critic", load_path))
-        self.twin_critic_target.load_state_dict(super().load_state_dict(self.name + "_twin_critic", load_path))
+        self.shared_critic1.load_state_dict(super().load_state_dict(self.name + "_critic1", load_path))
+        self.shared_critic1_target.load_state_dict(super().load_state_dict(self.name + "_critic1", load_path))
+        self.shared_critic2.load_state_dict(super().load_state_dict(self.name + "_critic2", load_path))
+        self.shared_critic2_target.load_state_dict(super().load_state_dict(self.name + "_critic2", load_path))
         self.load_stats(self.name + "_state_normalizer", load_path)
 
 

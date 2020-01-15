@@ -13,7 +13,7 @@ from unityagents import UnityEnvironment
 
 from maTD3.agent.MA_TD3_agent import MATD3Agent
 from maTD3.agent.multi_agent import MultiAgent
-from maTD3.model.twin_ac_model import Actor, TwinCritic
+from maTD3.model.twin_ac_model import Actor, Critic
 from maTD3.replay_buffers.replay_buffer import ReplayBuffer
 from utils import log
 
@@ -133,11 +133,11 @@ def train_agent(brain_name, agent, action_size, n_episodes=1000, max_t=1000, fil
         if i_episode % print_every == 0:
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_deque)))
         if i_episode >= 100 and avg_score > 0.5 and not beaten:
+            beaten = True
             log_str = ('\nEnvironment solved in {:d} episodes!'.format(i_episode))
             logging_buffer += log_str
             print(log_str)
             log.file_append(file, logging_buffer)
-            break
     return scores
 
 
@@ -146,22 +146,22 @@ if __name__ == '__main__':
     parser.add_argument("--seed", default=0, type=int)  # The seed for testing
     parser.add_argument("--max_timesteps", default=2000, type=int)  # Max time per episode
     parser.add_argument("--episodes", default=4000, type=int)  # Number of episodes to train for
-    parser.add_argument("--batch_size", default=1024, type=int)  # Batch size for training
-    parser.add_argument("--buffer_size", default=2 ** 20, type=int)  # Batch size for training
-    parser.add_argument("--discount", default=0.99)  # Discount factor
-    parser.add_argument("--tau", default=1e-3)  # Soft update factor
-    parser.add_argument("--lr_actor", default=1e-4)  # Optimizer learning rate for the actor
-    parser.add_argument("--lr_critic", default=1e-3)  # Optimizer learning rate for the critic
+    parser.add_argument("--batch_size", default=256, type=int)  # Batch size for training [Tried, 256, 512, 1024]
+    parser.add_argument("--buffer_size", default=int(1e5), type=int)  # Batch size for training [Tried, 1e5, 1e6, 2**20]
+    parser.add_argument("--discount", default=0.99)  # Discount factor [Tried, 0.99, 0.995]
+    parser.add_argument("--tau", default=1e-2)  # Soft update factor [Tried, 1e-2, 1e-3, 1e-4]
+    parser.add_argument("--lr_actor", default=1e-4)  # Optimizer learning rate for the actor [Tried, 1e-3, 1e-4]
+    parser.add_argument("--lr_critic", default=1e-4)  # Optimizer learning rate for the critic [Tried, 1e-3, 1e-4]
     parser.add_argument("--warmup_rounds", default=0)  # Optimizer learning rate for the critic
-    parser.add_argument("--weight_decay", default=0)  # Optimizer learning rate for the critic
+    parser.add_argument("--weight_decay", default=0)  # Optimizer learning rate for the critic [Tried, 0, 1e-6]
     parser.add_argument("--policy_noise", default=0.2)  # Noise added to target policy during critic update
     parser.add_argument("--noise_clip", default=0.5)  # Range to clip target policy noise
     parser.add_argument("--exploration_noise", default=0.3)  # Std of Gaussian exploration noise
-    parser.add_argument("--noise_reduction_factor", default=0.999)  # Reducing the noise
-    parser.add_argument("--noise_scalar_init", default=2)  # initialise noise at start of each episode
+    parser.add_argument("--noise_reduction_factor", default=0.999)  # Reducing the noise [Tried, 0.99, 0.999]
+    parser.add_argument("--noise_scalar_init", default=2)  # initialise noise at start of each episode [Tried, 1, 2]
     parser.add_argument("--train_delay", default=2, type=int)  # Frequency of delayed policy updates
     parser.add_argument("--steps_before_train", default=4, type=int)  # Steps taken between train calls.
-    parser.add_argument("--train_iterations", default=1, type=int)  # number of batches trained on per train call
+    parser.add_argument("--train_iterations", default=2, type=int)  # number of batches trained on per train call [Tried, 1, 2]
     parser.add_argument("--result_folder", default=os.path.join(os.getcwd(), "results"))
     parser.add_argument("--load_model_path", default="")  # If should load model: if "" don't load anything
     parser.add_argument("--eval", default=False, type=bool)  # If we only want to evaluate a model.
@@ -226,19 +226,10 @@ if __name__ == '__main__':
     agents = []
     actor_func = partial(Actor, state_size=state_size, action_size=action_size, seed=args.seed, fc1_units=256,
                          fc2_units=128)
-    # Shares critic along all agents
-    twin_critic = TwinCritic(state_size=state_size, action_size=action_size, seed=args.seed,
-                             fc1_units=256, fc2_units=128).to(device=device)
-    twin_critic_target = TwinCritic(state_size=state_size, action_size=action_size, seed=args.seed,
-                                    fc1_units=256, fc2_units=128).to(device=device)
-    critic_optimizer = optim.Adam(twin_critic.parameters(), lr=args.lr_critic,
-                                  weight_decay=args.weight_decay)
     for i in range(1, num_agents + 1):
         agents.append(MATD3Agent("MATD3Agent" + str(i),
                                  actor_func=actor_func,
-                                 twin_critic=twin_critic,
-                                 twin_critic_target=twin_critic_target,
-                                 critic_optimizer=critic_optimizer,
+                                 state_size=state_size,
                                  replay_buffer=replay_buffer,
                                  action_size=action_size,
                                  action_val_high=action_val_high,
