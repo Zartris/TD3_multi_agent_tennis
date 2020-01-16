@@ -24,7 +24,7 @@
 	warmup_rounds=0
 	weight_decay=0
 	
-##Training stats:
+## Training stats:
 	
 	Episode 1	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.53
 	Episode 2	Average Score: 0.05 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.27
