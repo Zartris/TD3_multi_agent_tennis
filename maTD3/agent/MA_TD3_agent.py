@@ -2,7 +2,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 from maTD3.agent.AgentBase import AgentBase
-from maTD3.model.twin_ac_model import TwinCritic, TD3Actor, Critic
+from maTD3.model.twin_ac_model import TwinCritic_simple, TD3Actor
 from maTD3.replay_buffers.replay_buffer import ReplayBuffer
 from maTD3.utils import *
 
@@ -16,25 +16,22 @@ N_STEP = 3
 class MATD3Agent(AgentBase):
     """Interacts with and learns from the environment."""
     # Shared crtic among all agents
-    shared_critic1 = None
-    shared_critic1_target = None
-    shared_critic1_optimizer = None
-
-    shared_critic2 = None
-    shared_critic2_target = None
-    shared_critic2_optimizer = None
+    shared_twin_critic = None
+    shared_twin_critic_target = None
+    shared_twin_critic_optimizer = None
+    shared_memory = None
 
     def __init__(self,
                  agent_name: str,
                  actor_func,
                  state_size,
-                 replay_buffer,
+                 replay_buffer_func,
                  action_size: int,
                  action_val_high: float,
                  action_val_low: float,
                  save_path: Path = None,
-                 state_normalizer=RescaleNormalizer(),  # Todo: implement this
-                 log_level: int = 0,  # 0 Equal to log everything
+                 state_normalizer=RescaleNormalizer(),  # Todo: implement this (but not used in this project)
+                 log_level: int = 0,  # 0 Equal to log everything (not used in this project)
                  seed: int = 0,
                  train_delay: int = 2,
                  steps_before_train=1,
@@ -69,38 +66,32 @@ class MATD3Agent(AgentBase):
 
         # Using Twin Critic Network (w/ Target Network), we are combining the two critics into the same network
         # Critic Network (w/ Target Network)
-        # fcs1_units = 256, fc2_units = 128
-        if MATD3Agent.shared_critic1 is None:
-            MATD3Agent.shared_critic1 = Critic(state_size, action_size, self.seed, fcs1_units=256, fc2_units=128).to(
+        if MATD3Agent.shared_twin_critic is None:
+            MATD3Agent.shared_twin_critic = TwinCritic_simple(state_size, action_size, self.seed, fc1_units=256,
+                                                              fc2_units=128,
+                                                              use_batch_norm=False).to(
                 self.device)
-        if MATD3Agent.shared_critic1_target is None:
-            MATD3Agent.shared_critic1_target = Critic(state_size, action_size, self.seed, fcs1_units=256,
-                                                      fc2_units=128).to(self.device)
-            MATD3Agent.shared_critic1_target.load_state_dict(self.shared_critic1.state_dict())
-        if MATD3Agent.shared_critic1_optimizer is None:
-            MATD3Agent.shared_critic1_optimizer = optim.Adam(self.shared_critic1.parameters(), lr=lr_critic)
-        self.shared_critic1 = MATD3Agent.shared_critic1
-        self.shared_critic1_target = MATD3Agent.shared_critic1_target
-        self.shared_critic1_optimizer = MATD3Agent.shared_critic1_optimizer
+        if MATD3Agent.shared_twin_critic_target is None:
+            MATD3Agent.shared_twin_critic_target = TwinCritic_simple(state_size, action_size, self.seed,
+                                                                     fc1_units=256,
+                                                                     fc2_units=128, use_batch_norm=False).to(
+                self.device)
+            MATD3Agent.shared_twin_critic_target.load_state_dict(self.shared_twin_critic.state_dict())
+        if MATD3Agent.shared_twin_critic_optimizer is None:
+            MATD3Agent.shared_twin_critic_optimizer = optim.Adam(self.shared_twin_critic.parameters(),
+                                                                 lr=lr_critic)
 
-        if MATD3Agent.shared_critic2 is None:
-            MATD3Agent.shared_critic2 = Critic(state_size, action_size, self.seed, fcs1_units=256, fc2_units=128).to(
-                self.device)
-        if MATD3Agent.shared_critic2_target is None:
-            MATD3Agent.shared_critic2_target = Critic(state_size, action_size, self.seed, fcs1_units=256,
-                                                      fc2_units=128).to(self.device)
-            MATD3Agent.shared_critic2_target.load_state_dict(self.shared_critic2.state_dict())
-        if MATD3Agent.shared_critic2_optimizer is None:
-            MATD3Agent.shared_critic2_optimizer = optim.Adam(self.shared_critic2.parameters(), lr=lr_critic)
-        self.shared_critic2 = MATD3Agent.shared_critic2
-        self.shared_critic2_target = MATD3Agent.shared_critic2_target
-        self.shared_critic2_optimizer = MATD3Agent.shared_critic2_optimizer
+        self.shared_twin_critic = MATD3Agent.shared_twin_critic
+        self.shared_twin_critic_target = MATD3Agent.shared_twin_critic_target
+        self.shared_twin_critic_optimizer = MATD3Agent.shared_twin_critic_optimizer
 
         # Learning count:
         self.train_count = 0
 
         # Replay buffer:
-        self.memory = replay_buffer
+        if MATD3Agent.shared_memory is None:
+            MATD3Agent.shared_memory = replay_buffer_func()
+        self.memory = MATD3Agent.shared_memory
 
         # Amount of training rounds:
         self.train_delay = train_delay
@@ -135,7 +126,7 @@ class MATD3Agent(AgentBase):
     def step(self, state, action, reward, next_state, done):
         """Save experience in replay memory, and use random sample from buffer to learn."""
         self.total_steps += 1
-        self.memory.add(state, action, reward, next_state, done)
+        self.memory.add(state, action, reward, next_state, done,agent_idx=None, error=None)
         # Time to train.
         # We want to train the critics every step but delay the actor update for self.train_delay of time.
         # Learn, if enough samples are available in memory
@@ -145,17 +136,8 @@ class MATD3Agent(AgentBase):
                     idxs, experiences, is_weights = self.memory.sample()
                     self.learn(experiences)
 
-    def step_shared(self, shared_memory):
-        """Save experience in replay memory, and use random sample from buffer to learn."""
-        self.total_steps += 1
-        # Time to train.
-        # We want to train the critics every step but delay the actor update for self.train_delay of time.
-        # Learn, if enough samples are available in memory
-        if shared_memory.is_full_enough():
-            if self.total_steps % self.steps_before_train == 0:
-                for _ in range(self.train_iterations):
-                    idxs, experiences, is_weights = shared_memory.sample()
-                    self.learn(experiences)
+    def add_to_memory(self,state, action, reward, next_state, done, agent_idx=None, error=None):
+        self.memory.add(state, action, reward, next_state, done, agent_idx=None, error=None)
 
     def learn(self, experiences):
         """Update policy and value parameters using given batch of experience tuples.
@@ -184,29 +166,19 @@ class MATD3Agent(AgentBase):
         next_actions = next_actions.clamp(self.action_val_low, self.action_val_high)
 
         # Compute the target Q value:
-        # Q1_targets, Q2_targets = self.twin_critic_target(next_states, next_actions)
-        Q1_targets = self.shared_critic1_target(next_states, next_actions)
-        Q2_targets = self.shared_critic2_target(next_states, next_actions)
+        Q1_targets, Q2_targets = self.shared_twin_critic_target(next_states, next_actions)
         target_Q = torch.min(Q1_targets, Q2_targets)
         target_Q = rewards + (self.discount * target_Q * (1 - dones)).detach()
 
         # Compute critic loss
-        # expected_Q1, expected_Q2 = self.twin_critic(states, actions)  # let it compute gradient
-        expected_Q1 = self.shared_critic1(states, actions)
-        expected_Q2 = self.shared_critic2(states, actions)
-        critic_loss = F.mse_loss(expected_Q1, target_Q)
-        critic_loss2 = F.mse_loss(expected_Q2, target_Q)
+        expected_Q1, expected_Q2 = self.shared_twin_critic(states, actions)  # let it compute gradient
+        critic_loss = F.mse_loss(expected_Q1, target_Q) + F.mse_loss(expected_Q2, target_Q)
 
         # Minimize the loss
-        self.shared_critic1_optimizer.zero_grad()
+        self.shared_twin_critic_optimizer.zero_grad()
         critic_loss.backward()
-        torch.nn.utils.clip_grad_norm_(self.shared_critic1.parameters(), 1)
-        self.shared_critic1_optimizer.step()
-
-        self.shared_critic2_optimizer.zero_grad()
-        critic_loss2.backward()
-        torch.nn.utils.clip_grad_norm_(self.shared_critic2.parameters(), 1)
-        self.shared_critic2_optimizer.step()
+        torch.nn.utils.clip_grad_norm_(self.shared_twin_critic.parameters(), 1)
+        self.shared_twin_critic_optimizer.step()
 
         # Delayed training of actor network:
         if self.train_count % self.train_delay == 0:
@@ -214,7 +186,7 @@ class MATD3Agent(AgentBase):
             self.train_count = 0
             # Compute actor loss
             actions_pred = self.actor(states)
-            actor_loss = -self.shared_critic1(states, actions_pred).mean()  # Minus is for maximizing
+            actor_loss = -self.shared_twin_critic.Q1(states, actions_pred).mean()  # Minus is for maximizing
             # Minimize the loss
             self.actor_optimizer.zero_grad()
             torch.nn.utils.clip_grad_norm_(self.actor.parameters(), 1)
@@ -222,8 +194,7 @@ class MATD3Agent(AgentBase):
             self.actor_optimizer.step()
 
             # ----------------------- update target networks ----------------------- #
-            self.soft_update(self.shared_critic1, self.shared_critic1_target, self.tau)
-            self.soft_update(self.shared_critic2, self.shared_critic2_target, self.tau)
+            self.soft_update(self.shared_twin_critic, self.shared_twin_critic_target, self.tau)
             self.soft_update(self.actor, self.actor_target, self.tau)
 
     def eval_step(self, state):
@@ -234,17 +205,14 @@ class MATD3Agent(AgentBase):
 
     def save_all(self):
         super().save(self.name + "_actor", self.actor)
-        super().save(self.name + "_critic1", self.shared_critic1)
-        super().save(self.name + "_critic2", self.shared_critic2)
+        super().save(self.name + "_critic", self.shared_twin_critic)
         super().save_stats(self.name + "_state_normalizer")
 
     def load_all(self, load_path: Path = None):
         self.actor.load_state_dict(super().load_state_dict(self.name + "_actor", load_path))
         self.actor_target.load_state_dict(super().load_state_dict(self.name + "_actor", load_path))
-        self.shared_critic1.load_state_dict(super().load_state_dict(self.name + "_critic1", load_path))
-        self.shared_critic1_target.load_state_dict(super().load_state_dict(self.name + "_critic1", load_path))
-        self.shared_critic2.load_state_dict(super().load_state_dict(self.name + "_critic2", load_path))
-        self.shared_critic2_target.load_state_dict(super().load_state_dict(self.name + "_critic2", load_path))
+        self.shared_twin_critic.load_state_dict(super().load_state_dict(self.name + "_critic", load_path))
+        self.shared_twin_critic_target.load_state_dict(super().load_state_dict(self.name + "_critic", load_path))
         self.load_stats(self.name + "_state_normalizer", load_path)
 
 

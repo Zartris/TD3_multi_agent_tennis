@@ -6,7 +6,7 @@ class MultiAgent(AgentBase):
     def __init__(self,
                  agent_name: str,
                  agents: list,
-                 shared_replay_buffer,
+                 is_shared_memory: bool = False,
                  save_path: Path = None,
                  state_normalizer=RescaleNormalizer(),  # Todo: implement this
                  log_level: int = 0,  # 0 Equal to log everything
@@ -14,7 +14,7 @@ class MultiAgent(AgentBase):
         super().__init__(agent_name, save_path, state_normalizer, log_level, seed)
 
         self.agents = agents
-        self.shared_memory = shared_replay_buffer
+        self.is_shared_memory = is_shared_memory
 
     def act(self, states, add_noise=True):
         """Returns actions for given state as per agent."""
@@ -35,17 +35,13 @@ class MultiAgent(AgentBase):
         for agent in self.agents:
             agent.reset()
 
-    def add_to_memory(self, state, action, reward, next_state, done, agent_idx=None, error=None):
+    def add_to_memory(self, states, actions, rewards, next_states, dones, agent_idx=None, error=None):
         """
-        allows us to add experiences from outside this class
-        :param state:
-        :param action:
-        :param reward:
-        :param next_state:
-        :param done:
-        :return:
+        allows us to add experiences from outside this class, without stepping
         """
-        self.shared_memory.add(state, action, reward, next_state, done, agent_idx=agent_idx, error=error)
+        for idx, (agent, state, action, reward, next_state, done) in enumerate(
+                zip(self.agents, states, actions, rewards, next_states, dones)):
+            agent.add_to_memory(state, action, reward, next_state, done, agent_idx=idx)
 
     def save_all(self):
         for agent in self.agents:

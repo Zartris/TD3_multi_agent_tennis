@@ -1,0 +1,1132 @@
+## Hyper parameters used:
+	batch_size=256
+	buffer_size=100000
+	discount=0.99
+	episodes=4000
+	eval=False
+	eval_load_best=False
+	exploration_noise=0.3
+	load_model_path=''
+	lr_actor=0.001
+	lr_critic=0.001
+	max_timesteps=2000
+	noise_clip=0.5
+	noise_reduction_factor=0.999
+	noise_scalar_init=2
+	policy_noise=0.2
+	result_folder='C:\\Fevre\\Code\\Python\\TD3_multi_agent_tennis\\results'
+	seed=0
+	slow_and_pretty=False
+	steps_before_train=4
+	tau=0.01
+	train_delay=2
+	train_iterations=2
+	warmup_rounds=0
+	weight_decay=0
+##Training stats:
+	Episode 1	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:1.82
+	Episode 2	Average Score: 0.05 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.09
+	Episode 3	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.04
+	Episode 4	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.03
+	Episode 5	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.04
+	Episode 6	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.08
+	Episode 7	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.04
+	Episode 8	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:6.82
+	Episode 9	Average Score: 0.02 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.65
+	Episode 10	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 11	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 12	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 13	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 14	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 15	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 16	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.32
+	Episode 17	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 18	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 19	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 20	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 21	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 22	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.34
+	Episode 23	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 24	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 25	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 26	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 27	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 28	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 29	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 30	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 31	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 32	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 33	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.27
+	Episode 34	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 35	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 36	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 37	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 38	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 39	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 40	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 41	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 42	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 43	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.41
+	Episode 44	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 45	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 46	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 47	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 48	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 49	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 50	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 51	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 52	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 53	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 54	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 55	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 56	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 57	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 58	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 59	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 60	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 61	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 62	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 63	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 64	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 65	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 66	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 67	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 68	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 69	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 70	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 71	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.32
+	Episode 72	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 73	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 74	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 75	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 76	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 77	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 78	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 79	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 80	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 81	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 82	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 83	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 84	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 85	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 86	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 87	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 88	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.44
+	Episode 89	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 90	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 91	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 92	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 93	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 94	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 95	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 96	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.34
+	Episode 97	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 98	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 99	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 100	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 101	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 102	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 103	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 104	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 105	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 106	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 107	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 108	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.41
+	Episode 109	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 110	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.43
+	Episode 111	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.35
+	Episode 112	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.46
+	Episode 113	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.33
+	Episode 114	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 115	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 116	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 117	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 118	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.33
+	Episode 119	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 120	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.33
+	Episode 121	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 122	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 123	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 124	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 125	Average Score: 0.00 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.02
+	Episode 126	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.35
+	Episode 127	Average Score: 0.00 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.65
+	Episode 128	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 129	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 130	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 131	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 132	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.32
+	Episode 133	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 134	Average Score: 0.00 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.60
+	Episode 135	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 136	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.42
+	Episode 137	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 138	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 139	Average Score: 0.00 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.65
+	Episode 140	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 141	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 142	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 143	Average Score: 0.00 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.72
+	Episode 144	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 145	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 146	Average Score: 0.00 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.27
+	Episode 147	Average Score: 0.01 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 148	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 149	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.33
+	Episode 150	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.42
+	Episode 151	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 152	Average Score: 0.01 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 153	Average Score: 0.01 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.75
+	Episode 154	Average Score: 0.01 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.57
+	Episode 155	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 156	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.43
+	Episode 157	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 158	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.41
+	Episode 159	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 160	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 161	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 162	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 163	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 164	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 165	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 166	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 167	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 168	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 169	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 170	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 171	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 172	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 173	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 174	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 175	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 176	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 177	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 178	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 179	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 180	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 181	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 182	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 183	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 184	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 185	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 186	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 187	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 188	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 189	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.45
+	Episode 190	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.33
+	Episode 191	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.45
+	Episode 192	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.35
+	Episode 193	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.45
+	Episode 194	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.33
+	Episode 195	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 196	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 197	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 198	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 199	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 200	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 201	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 202	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 203	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 204	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 205	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 206	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 207	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 208	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 209	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 210	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 211	Average Score: 0.01 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 212	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 213	Average Score: 0.01 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.65
+	Episode 214	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 215	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 216	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 217	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 218	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 219	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 220	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 221	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 222	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 223	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 224	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 225	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 226	Average Score: 0.01 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.22
+	Episode 227	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 228	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 229	Average Score: 0.01 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.67
+	Episode 230	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 231	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 232	Average Score: 0.01 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.74
+	Episode 233	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 234	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 235	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 236	Average Score: 0.01 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 237	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 238	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 239	Average Score: 0.01 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 240	Average Score: 0.01 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.65
+	Episode 241	Average Score: 0.02 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.80
+	Episode 242	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 243	Average Score: 0.02 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.16
+	Episode 244	Average Score: 0.02 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.82
+	Episode 245	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 246	Average Score: 0.02 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 247	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 248	Average Score: 0.02 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 249	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.42
+	Episode 250	Average Score: 0.02 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.55
+	Episode 251	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 252	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 253	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 254	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 255	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 256	Average Score: 0.02 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.68
+	Episode 257	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 258	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 259	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 260	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 261	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 262	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.48
+	Episode 263	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 264	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 265	Average Score: 0.02 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 266	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 267	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 268	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 269	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 270	Average Score: 0.02 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 271	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 272	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 273	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 274	Average Score: 0.02 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.74
+	Episode 275	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 276	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 277	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 278	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.46
+	Episode 279	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 280	Average Score: 0.02 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.69
+	Episode 281	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 282	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 283	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 284	Average Score: 0.02 	 current mean: 0.10	 Min:-0.01	Max:0.20	Duration:1.21
+	Episode 285	Average Score: 0.02 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.66
+	Episode 286	Average Score: 0.02 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 287	Average Score: 0.03 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 288	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 289	Average Score: 0.03 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.77
+	Episode 290	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 291	Average Score: 0.03 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.22
+	Episode 292	Average Score: 0.03 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.65
+	Episode 293	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.48
+	Episode 294	Average Score: 0.03 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.78
+	Episode 295	Average Score: 0.03 	 current mean: 0.04	 Min:-0.02	Max:0.10	Duration:0.80
+	Episode 296	Average Score: 0.03 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 297	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 298	Average Score: 0.03 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 299	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 300	Average Score: 0.03 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.12
+	Episode 301	Average Score: 0.03 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.76
+	Episode 302	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 303	Average Score: 0.03 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 304	Average Score: 0.04 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 305	Average Score: 0.04 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.78
+	Episode 306	Average Score: 0.04 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.67
+	Episode 307	Average Score: 0.04 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 308	Average Score: 0.04 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 309	Average Score: 0.04 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 310	Average Score: 0.04 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.42
+	Episode 311	Average Score: 0.04 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.66
+	Episode 312	Average Score: 0.04 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.73
+	Episode 313	Average Score: 0.04 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:0.65
+	Episode 314	Average Score: 0.04 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.66
+	Episode 315	Average Score: 0.04 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.74
+	Episode 316	Average Score: 0.04 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+	Episode 317	Average Score: 0.05 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 318	Average Score: 0.05 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 319	Average Score: 0.05 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+	Episode 320	Average Score: 0.05 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 321	Average Score: 0.05 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.73
+	Episode 322	Average Score: 0.05 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.51
+	Episode 323	Average Score: 0.06 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.20
+	Episode 324	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+	Episode 325	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 326	Average Score: 0.06 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.60
+	Episode 327	Average Score: 0.06 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.65
+	Episode 328	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 329	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.74
+	Episode 330	Average Score: 0.06 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.65
+	Episode 331	Average Score: 0.06 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.74
+	Episode 332	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.73
+	Episode 333	Average Score: 0.06 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.65
+	Episode 334	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 335	Average Score: 0.06 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.57
+	Episode 336	Average Score: 0.06 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 337	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.71
+	Episode 338	Average Score: 0.06 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 339	Average Score: 0.06 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.66
+	Episode 340	Average Score: 0.06 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.28
+	Episode 341	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 342	Average Score: 0.06 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.67
+	Episode 343	Average Score: 0.06 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.49
+	Episode 344	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.81
+	Episode 345	Average Score: 0.06 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.12
+	Episode 346	Average Score: 0.06 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+	Episode 347	Average Score: 0.06 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.27
+	Episode 348	Average Score: 0.07 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:2.98
+	Episode 349	Average Score: 0.07 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.52
+	Episode 350	Average Score: 0.07 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.10
+	Episode 351	Average Score: 0.07 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.87
+	Episode 352	Average Score: 0.07 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.98
+	Episode 353	Average Score: 0.07 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.77
+	Episode 354	Average Score: 0.07 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.30
+	Episode 355	Average Score: 0.07 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.57
+	Episode 356	Average Score: 0.07 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.12
+	Episode 357	Average Score: 0.07 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 358	Average Score: 0.07 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 359	Average Score: 0.07 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.75
+	Episode 360	Average Score: 0.08 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+	Episode 361	Average Score: 0.08 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.22
+	Episode 362	Average Score: 0.08 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+	Episode 363	Average Score: 0.08 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.78
+	Episode 364	Average Score: 0.08 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.70
+	Episode 365	Average Score: 0.08 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.75
+	Episode 366	Average Score: 0.08 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.18
+	Episode 367	Average Score: 0.08 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.73
+	Episode 368	Average Score: 0.09 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.39
+	Episode 369	Average Score: 0.09 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.70
+	Episode 370	Average Score: 0.09 	 current mean: 0.20	 Min:0.09	Max:0.30	Duration:2.14
+	Episode 371	Average Score: 0.09 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 372	Average Score: 0.09 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.34
+	Episode 373	Average Score: 0.10 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.09
+	Episode 374	Average Score: 0.10 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.96
+	Episode 375	Average Score: 0.10 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.32
+	Episode 376	Average Score: 0.10 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.68
+	Episode 377	Average Score: 0.10 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.53
+	Episode 378	Average Score: 0.10 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.75
+	Episode 379	Average Score: 0.11 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.82
+	Episode 380	Average Score: 0.10 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.17
+	Episode 381	Average Score: 0.10 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.32
+	Episode 382	Average Score: 0.11 	 current mean: 0.50	 Min:0.49	Max:0.50	Duration:5.48
+	Episode 383	Average Score: 0.11 	 current mean: 0.35	 Min:0.30	Max:0.39	Duration:3.86
+
+At episode 383 the current best 0.10 has been beaten by 0.11, so we save the model	Episode 384	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 385	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 386	Average Score: 0.11 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.44
+	Episode 387	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 388	Average Score: 0.12 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:4.12
+	Episode 389	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 390	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.60
+	Episode 391	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 392	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.69
+	Episode 393	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 394	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.69
+	Episode 395	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 396	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.72
+	Episode 397	Average Score: 0.12 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.78
+	Episode 398	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.28
+	Episode 399	Average Score: 0.12 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.29
+	Episode 400	Average Score: 0.12 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.70
+	Episode 401	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 402	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.89
+	Episode 403	Average Score: 0.12 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.32
+	Episode 404	Average Score: 0.12 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.56
+	Episode 405	Average Score: 0.12 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:3.25
+
+At episode 405 the current best 0.11 has been beaten by 0.12, so we save the model	Episode 406	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.35
+	Episode 407	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.84
+	Episode 408	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 409	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.26
+	Episode 410	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 411	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 412	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 413	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 414	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.50
+	Episode 415	Average Score: 0.12 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.64
+	Episode 416	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.82
+	Episode 417	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.99
+	Episode 418	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 419	Average Score: 0.12 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.69
+	Episode 420	Average Score: 0.12 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.69
+	Episode 421	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 422	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 423	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.89
+	Episode 424	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 425	Average Score: 0.11 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.85
+	Episode 426	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.71
+	Episode 427	Average Score: 0.11 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.78
+	Episode 428	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.81
+	Episode 429	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 430	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 431	Average Score: 0.11 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.29
+	Episode 432	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 433	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 434	Average Score: 0.11 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.71
+	Episode 435	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 436	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.80
+	Episode 437	Average Score: 0.11 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.80
+	Episode 438	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.72
+	Episode 439	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.43
+	Episode 440	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.83
+	Episode 441	Average Score: 0.11 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:3.23
+	Episode 442	Average Score: 0.11 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:2.23
+	Episode 443	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.35
+	Episode 444	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.42
+	Episode 445	Average Score: 0.11 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.67
+	Episode 446	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 447	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.21
+	Episode 448	Average Score: 0.11 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.93
+	Episode 449	Average Score: 0.11 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.63
+	Episode 450	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.41
+	Episode 451	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.34
+	Episode 452	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 453	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.74
+	Episode 454	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.73
+	Episode 455	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.43
+	Episode 456	Average Score: 0.11 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.86
+	Episode 457	Average Score: 0.11 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:6.23
+	Episode 458	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.41
+	Episode 459	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.72
+	Episode 460	Average Score: 0.12 	 current mean: 0.45	 Min:0.40	Max:0.49	Duration:4.49
+	Episode 461	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 462	Average Score: 0.12 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.72
+	Episode 463	Average Score: 0.12 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.72
+	Episode 464	Average Score: 0.12 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.63
+	Episode 465	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 466	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.41
+	Episode 467	Average Score: 0.12 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 468	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 469	Average Score: 0.11 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.21
+	Episode 470	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.65
+	Episode 471	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 472	Average Score: 0.11 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.55
+	Episode 473	Average Score: 0.11 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.32
+	Episode 474	Average Score: 0.11 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.59
+	Episode 475	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 476	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 477	Average Score: 0.11 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.40
+	Episode 478	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+	Episode 479	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 480	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 481	Average Score: 0.11 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.69
+	Episode 482	Average Score: 0.11 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:5.00
+	Episode 483	Average Score: 0.11 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 484	Average Score: 0.11 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.89
+	Episode 485	Average Score: 0.11 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.94
+	Episode 486	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 487	Average Score: 0.11 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.56
+	Episode 488	Average Score: 0.12 	 current mean: 0.70	 Min:0.69	Max:0.70	Duration:6.57
+	Episode 489	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 490	Average Score: 0.11 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 491	Average Score: 0.12 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.48
+	Episode 492	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.04
+	Episode 493	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.88
+	Episode 494	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.83
+	Episode 495	Average Score: 0.12 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.99
+	Episode 496	Average Score: 0.12 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.60
+	Episode 497	Average Score: 0.12 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.36
+	Episode 498	Average Score: 0.13 	 current mean: 0.80	 Min:0.79	Max:0.80	Duration:8.37
+	Episode 499	Average Score: 0.13 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.73
+	Episode 500	Average Score: 0.13 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.29
+	Episode 501	Average Score: 0.13 	 current mean: 0.35	 Min:0.30	Max:0.39	Duration:4.19
+	Episode 502	Average Score: 0.14 	 current mean: 0.50	 Min:0.49	Max:0.50	Duration:5.07
+
+At episode 502 the current best 0.12 has been beaten by 0.14, so we save the model	Episode 503	Average Score: 0.14 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.75
+	Episode 504	Average Score: 0.14 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.52
+	Episode 505	Average Score: 0.14 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.69
+	Episode 506	Average Score: 0.14 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+	Episode 507	Average Score: 0.15 	 current mean: 0.95	 Min:0.89	Max:1.00	Duration:9.24
+	Episode 508	Average Score: 0.16 	 current mean: 1.15	 Min:1.09	Max:1.20	Duration:11.71
+
+At episode 508 the current best 0.14 has been beaten by 0.16, so we save the model	Episode 509	Average Score: 0.16 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.22
+	Episode 510	Average Score: 0.16 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.25
+	Episode 511	Average Score: 0.16 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.00
+	Episode 512	Average Score: 0.16 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.84
+	Episode 513	Average Score: 0.16 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.66
+	Episode 514	Average Score: 0.16 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 515	Average Score: 0.16 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 516	Average Score: 0.16 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 517	Average Score: 0.16 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.77
+	Episode 518	Average Score: 0.17 	 current mean: 0.50	 Min:0.49	Max:0.50	Duration:4.86
+	Episode 519	Average Score: 0.17 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.36
+	Episode 520	Average Score: 0.17 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.77
+
+At episode 520 the current best 0.16 has been beaten by 0.17, so we save the model	Episode 521	Average Score: 0.17 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.73
+	Episode 522	Average Score: 0.17 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.32
+	Episode 523	Average Score: 0.17 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:4.31
+	Episode 524	Average Score: 0.19 	 current mean: 1.95	 Min:1.89	Max:2.00	Duration:20.25
+
+At episode 524 the current best 0.17 has been beaten by 0.19, so we save the model	Episode 525	Average Score: 0.19 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 526	Average Score: 0.19 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.41
+	Episode 527	Average Score: 0.19 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.53
+	Episode 528	Average Score: 0.20 	 current mean: 1.30	 Min:1.29	Max:1.30	Duration:14.63
+
+At episode 528 the current best 0.19 has been beaten by 0.20, so we save the model	Episode 529	Average Score: 0.20 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.34
+	Episode 530	Average Score: 0.20 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.21
+	Episode 531	Average Score: 0.20 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.44
+	Episode 532	Average Score: 0.21 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.15
+	Episode 533	Average Score: 0.21 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 534	Average Score: 0.21 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.13
+	Episode 535	Average Score: 0.21 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.65
+	Episode 536	Average Score: 0.21 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.35
+	Episode 537	Average Score: 0.22 	 current mean: 1.00	 Min:0.99	Max:1.00	Duration:10.68
+
+At episode 537 the current best 0.20 has been beaten by 0.22, so we save the model	Episode 538	Average Score: 0.22 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 539	Average Score: 0.22 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.74
+	Episode 540	Average Score: 0.22 	 current mean: 0.75	 Min:0.69	Max:0.80	Duration:10.04
+	Episode 541	Average Score: 0.22 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.93
+	Episode 542	Average Score: 0.22 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:3.41
+	Episode 543	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.63
+	Episode 544	Average Score: 0.23 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.77
+	Episode 545	Average Score: 0.23 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:4.72
+
+At episode 545 the current best 0.22 has been beaten by 0.23, so we save the model	Episode 546	Average Score: 0.23 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.57
+	Episode 547	Average Score: 0.24 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.28
+	Episode 548	Average Score: 0.24 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:3.17
+	Episode 549	Average Score: 0.24 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.06
+	Episode 550	Average Score: 0.24 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.19
+	Episode 551	Average Score: 0.24 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.42
+
+At episode 551 the current best 0.23 has been beaten by 0.24, so we save the model	Episode 552	Average Score: 0.24 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:1.95
+	Episode 553	Average Score: 0.24 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.65
+	Episode 554	Average Score: 0.25 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.33
+	Episode 555	Average Score: 0.25 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.50
+
+At episode 555 the current best 0.24 has been beaten by 0.25, so we save the model	Episode 556	Average Score: 0.25 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.97
+	Episode 557	Average Score: 0.25 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.50
+	Episode 558	Average Score: 0.25 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.06
+	Episode 559	Average Score: 0.25 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.20
+	Episode 560	Average Score: 0.25 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.83
+	Episode 561	Average Score: 0.25 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.27
+	Episode 562	Average Score: 0.25 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.78
+	Episode 563	Average Score: 0.25 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:2.93
+	Episode 564	Average Score: 0.25 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.14
+	Episode 565	Average Score: 0.25 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.74
+	Episode 566	Average Score: 0.26 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.53
+	Episode 567	Average Score: 0.26 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.43
+
+At episode 567 the current best 0.25 has been beaten by 0.26, so we save the model	Episode 568	Average Score: 0.27 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.35
+	Episode 569	Average Score: 0.27 	 current mean: 0.75	 Min:0.70	Max:0.79	Duration:7.49
+
+At episode 569 the current best 0.26 has been beaten by 0.27, so we save the model	Episode 570	Average Score: 0.27 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.44
+	Episode 571	Average Score: 0.27 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.21
+	Episode 572	Average Score: 0.27 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 573	Average Score: 0.27 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.02
+	Episode 574	Average Score: 0.27 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.65
+	Episode 575	Average Score: 0.27 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.64
+	Episode 576	Average Score: 0.28 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.61
+	Episode 577	Average Score: 0.27 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 578	Average Score: 0.28 	 current mean: 0.50	 Min:0.49	Max:0.50	Duration:4.76
+	Episode 579	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.14
+	Episode 580	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 581	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.22
+	Episode 582	Average Score: 0.27 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.14
+	Episode 583	Average Score: 0.28 	 current mean: 0.65	 Min:0.59	Max:0.70	Duration:6.11
+	Episode 584	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.21
+	Episode 585	Average Score: 0.28 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.76
+	Episode 586	Average Score: 0.28 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.17
+	Episode 587	Average Score: 0.28 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.89
+
+At episode 587 the current best 0.27 has been beaten by 0.28, so we save the model	Episode 588	Average Score: 0.28 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.21
+	Episode 589	Average Score: 0.28 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.95
+	Episode 590	Average Score: 0.28 	 current mean: 0.45	 Min:0.40	Max:0.49	Duration:4.69
+	Episode 591	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.21
+	Episode 592	Average Score: 0.28 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.55
+	Episode 593	Average Score: 0.28 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 594	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.21
+	Episode 595	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 596	Average Score: 0.28 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.14
+	Episode 597	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.21
+	Episode 598	Average Score: 0.28 	 current mean: 0.75	 Min:0.69	Max:0.80	Duration:7.05
+	Episode 599	Average Score: 0.29 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.92
+	Episode 600	Average Score: 0.28 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 601	Average Score: 0.29 	 current mean: 1.45	 Min:1.39	Max:1.50	Duration:13.25
+
+At episode 601 the current best 0.28 has been beaten by 0.29, so we save the model	Episode 602	Average Score: 0.29 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.42
+	Episode 603	Average Score: 0.29 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.52
+	Episode 604	Average Score: 0.29 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.23
+	Episode 605	Average Score: 0.29 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.74
+	Episode 606	Average Score: 0.29 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.96
+	Episode 607	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.66
+	Episode 608	Average Score: 0.27 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 609	Average Score: 0.27 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 610	Average Score: 0.29 	 current mean: 2.55	 Min:2.50	Max:2.60	Duration:23.43
+	Episode 611	Average Score: 0.29 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.13
+	Episode 612	Average Score: 0.30 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.01
+	Episode 613	Average Score: 0.30 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.01
+	Episode 614	Average Score: 0.30 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.15
+	Episode 615	Average Score: 0.30 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.22
+	Episode 616	Average Score: 0.30 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.61
+	Episode 617	Average Score: 0.30 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.21
+	Episode 618	Average Score: 0.30 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.43
+	Episode 619	Average Score: 0.30 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 620	Average Score: 0.30 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.00
+	Episode 621	Average Score: 0.30 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 622	Average Score: 0.30 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.51
+	Episode 623	Average Score: 0.30 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.57
+	Episode 624	Average Score: 0.28 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.08
+	Episode 625	Average Score: 0.28 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.16
+	Episode 626	Average Score: 0.28 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.29
+	Episode 627	Average Score: 0.28 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.59
+	Episode 628	Average Score: 0.27 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 629	Average Score: 0.27 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.84
+	Episode 630	Average Score: 0.27 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.44
+	Episode 631	Average Score: 0.27 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 632	Average Score: 0.27 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.19
+	Episode 633	Average Score: 0.27 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.89
+	Episode 634	Average Score: 0.27 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 635	Average Score: 0.27 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.75
+	Episode 636	Average Score: 0.26 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.54
+	Episode 637	Average Score: 0.26 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.05
+	Episode 638	Average Score: 0.26 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.76
+	Episode 639	Average Score: 0.26 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 640	Average Score: 0.25 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.11
+	Episode 641	Average Score: 0.25 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 642	Average Score: 0.25 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 643	Average Score: 0.25 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.25
+	Episode 644	Average Score: 0.25 	 current mean: 0.35	 Min:0.30	Max:0.39	Duration:3.42
+	Episode 645	Average Score: 0.25 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.59
+	Episode 646	Average Score: 0.25 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:0.97
+	Episode 647	Average Score: 0.24 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.75
+	Episode 648	Average Score: 0.24 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.47
+	Episode 649	Average Score: 0.24 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 650	Average Score: 0.25 	 current mean: 1.00	 Min:0.99	Max:1.00	Duration:9.35
+	Episode 651	Average Score: 0.25 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.01
+	Episode 652	Average Score: 0.24 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.32
+	Episode 653	Average Score: 0.25 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.55
+	Episode 654	Average Score: 0.24 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.23
+	Episode 655	Average Score: 0.24 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.80
+	Episode 656	Average Score: 0.24 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:1.98
+	Episode 657	Average Score: 0.24 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 658	Average Score: 0.24 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.80
+	Episode 659	Average Score: 0.24 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.28
+	Episode 660	Average Score: 0.24 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.88
+	Episode 661	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 662	Average Score: 0.23 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.90
+	Episode 663	Average Score: 0.24 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.27
+	Episode 664	Average Score: 0.24 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:6.68
+	Episode 665	Average Score: 0.24 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 666	Average Score: 0.24 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.45
+	Episode 667	Average Score: 0.24 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:2.82
+	Episode 668	Average Score: 0.24 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.08
+	Episode 669	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.41
+	Episode 670	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.67
+	Episode 671	Average Score: 0.23 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.54
+	Episode 672	Average Score: 0.23 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.43
+	Episode 673	Average Score: 0.23 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.87
+	Episode 674	Average Score: 0.24 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.42
+	Episode 675	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.59
+	Episode 676	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 677	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 678	Average Score: 0.23 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.74
+	Episode 679	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 680	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 681	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.21
+	Episode 682	Average Score: 0.23 	 current mean: 0.35	 Min:0.30	Max:0.39	Duration:3.40
+	Episode 683	Average Score: 0.22 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.01
+	Episode 684	Average Score: 0.23 	 current mean: 0.55	 Min:0.50	Max:0.59	Duration:5.38
+	Episode 685	Average Score: 0.23 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.61
+	Episode 686	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 687	Average Score: 0.22 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 688	Average Score: 0.22 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 689	Average Score: 0.22 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 690	Average Score: 0.21 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 691	Average Score: 0.21 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.55
+	Episode 692	Average Score: 0.21 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.77
+	Episode 693	Average Score: 0.21 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.60
+	Episode 694	Average Score: 0.21 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 695	Average Score: 0.21 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 696	Average Score: 0.21 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 697	Average Score: 0.21 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.71
+	Episode 698	Average Score: 0.21 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.83
+	Episode 699	Average Score: 0.20 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.03
+	Episode 700	Average Score: 0.22 	 current mean: 1.70	 Min:1.69	Max:1.70	Duration:15.58
+	Episode 701	Average Score: 0.21 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.97
+	Episode 702	Average Score: 0.21 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 703	Average Score: 0.21 	 current mean: 0.45	 Min:0.40	Max:0.49	Duration:5.12
+	Episode 704	Average Score: 0.21 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.84
+	Episode 705	Average Score: 0.22 	 current mean: 0.95	 Min:0.89	Max:1.00	Duration:9.48
+	Episode 706	Average Score: 0.22 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.85
+	Episode 707	Average Score: 0.22 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.98
+	Episode 708	Average Score: 0.22 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.50
+	Episode 709	Average Score: 0.22 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.26
+	Episode 710	Average Score: 0.20 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.24
+	Episode 711	Average Score: 0.20 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.85
+	Episode 712	Average Score: 0.19 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 713	Average Score: 0.20 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:6.25
+	Episode 714	Average Score: 0.20 	 current mean: 0.30	 Min:0.19	Max:0.40	Duration:3.06
+	Episode 715	Average Score: 0.20 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:4.21
+	Episode 716	Average Score: 0.20 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.16
+	Episode 717	Average Score: 0.20 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.14
+	Episode 718	Average Score: 0.20 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 719	Average Score: 0.20 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.54
+	Episode 720	Average Score: 0.20 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.62
+	Episode 721	Average Score: 0.20 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 722	Average Score: 0.20 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 723	Average Score: 0.20 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.13
+	Episode 724	Average Score: 0.20 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.55
+	Episode 725	Average Score: 0.20 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.32
+	Episode 726	Average Score: 0.20 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.86
+	Episode 727	Average Score: 0.20 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 728	Average Score: 0.20 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.60
+	Episode 729	Average Score: 0.20 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.23
+	Episode 730	Average Score: 0.20 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.19
+	Episode 731	Average Score: 0.21 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.53
+	Episode 732	Average Score: 0.21 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.37
+	Episode 733	Average Score: 0.22 	 current mean: 0.80	 Min:0.79	Max:0.80	Duration:7.37
+	Episode 734	Average Score: 0.22 	 current mean: 0.50	 Min:0.49	Max:0.50	Duration:5.08
+	Episode 735	Average Score: 0.23 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:4.08
+	Episode 736	Average Score: 0.22 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 737	Average Score: 0.22 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.66
+	Episode 738	Average Score: 0.23 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.70
+	Episode 739	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.38
+	Episode 740	Average Score: 0.23 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 741	Average Score: 0.23 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.26
+	Episode 742	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.33
+	Episode 743	Average Score: 0.24 	 current mean: 0.95	 Min:0.89	Max:1.00	Duration:9.04
+	Episode 744	Average Score: 0.24 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.26
+	Episode 745	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+	Episode 746	Average Score: 0.23 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.84
+	Episode 747	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 748	Average Score: 0.24 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.64
+	Episode 749	Average Score: 0.24 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.81
+	Episode 750	Average Score: 0.23 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.68
+	Episode 751	Average Score: 0.23 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.60
+	Episode 752	Average Score: 0.23 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 753	Average Score: 0.23 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.57
+	Episode 754	Average Score: 0.23 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 755	Average Score: 0.23 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.72
+	Episode 756	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.14
+	Episode 757	Average Score: 0.23 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.21
+	Episode 758	Average Score: 0.23 	 current mean: 0.80	 Min:0.79	Max:0.80	Duration:7.83
+	Episode 759	Average Score: 0.23 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.81
+	Episode 760	Average Score: 0.23 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:1.37
+	Episode 761	Average Score: 0.23 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.14
+	Episode 762	Average Score: 0.23 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.05
+	Episode 763	Average Score: 0.23 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.66
+	Episode 764	Average Score: 0.23 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.53
+	Episode 765	Average Score: 0.23 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 766	Average Score: 0.24 	 current mean: 1.20	 Min:1.19	Max:1.20	Duration:11.27
+	Episode 767	Average Score: 0.24 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.13
+	Episode 768	Average Score: 0.24 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.13
+	Episode 769	Average Score: 0.24 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.15
+	Episode 770	Average Score: 0.24 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.86
+	Episode 771	Average Score: 0.24 	 current mean: 0.70	 Min:0.69	Max:0.70	Duration:6.86
+	Episode 772	Average Score: 0.25 	 current mean: 1.05	 Min:0.99	Max:1.10	Duration:9.79
+	Episode 773	Average Score: 0.25 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.57
+	Episode 774	Average Score: 0.25 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.89
+	Episode 775	Average Score: 0.25 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.59
+	Episode 776	Average Score: 0.26 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.60
+	Episode 777	Average Score: 0.28 	 current mean: 2.55	 Min:2.50	Max:2.59	Duration:23.77
+	Episode 778	Average Score: 0.28 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 779	Average Score: 0.28 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:6.09
+	Episode 780	Average Score: 0.29 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.53
+	Episode 781	Average Score: 0.29 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.61
+	Episode 782	Average Score: 0.29 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.18
+	Episode 783	Average Score: 0.29 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.48
+	Episode 784	Average Score: 0.28 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.57
+	Episode 785	Average Score: 0.28 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.62
+	Episode 786	Average Score: 0.31 	 current mean: 2.55	 Min:2.50	Max:2.60	Duration:23.85
+
+At episode 786 the current best 0.29 has been beaten by 0.31, so we save the model	Episode 787	Average Score: 0.31 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.05
+	Episode 788	Average Score: 0.32 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.63
+	Episode 789	Average Score: 0.32 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.67
+
+At episode 789 the current best 0.31 has been beaten by 0.32, so we save the model	Episode 790	Average Score: 0.32 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.36
+	Episode 791	Average Score: 0.32 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.25
+	Episode 792	Average Score: 0.33 	 current mean: 0.70	 Min:0.69	Max:0.70	Duration:6.77
+	Episode 793	Average Score: 0.33 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.48
+	Episode 794	Average Score: 0.33 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.52
+	Episode 795	Average Score: 0.34 	 current mean: 1.00	 Min:0.89	Max:1.10	Duration:10.02
+
+At episode 795 the current best 0.32 has been beaten by 0.34, so we save the model	Episode 796	Average Score: 0.34 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.36
+	Episode 797	Average Score: 0.34 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.00
+	Episode 798	Average Score: 0.34 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 799	Average Score: 0.34 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.23
+	Episode 800	Average Score: 0.32 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 801	Average Score: 0.32 	 current mean: 0.15	 Min:0.10	Max:0.19	Duration:1.81
+	Episode 802	Average Score: 0.33 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.65
+	Episode 803	Average Score: 0.33 	 current mean: 0.85	 Min:0.79	Max:0.90	Duration:8.21
+	Episode 804	Average Score: 0.33 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.50
+	Episode 805	Average Score: 0.33 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.20
+	Episode 806	Average Score: 0.33 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.87
+	Episode 807	Average Score: 0.33 	 current mean: 0.75	 Min:0.69	Max:0.80	Duration:8.09
+	Episode 808	Average Score: 0.33 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.14
+	Episode 809	Average Score: 0.33 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.35
+	Episode 810	Average Score: 0.33 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.75
+	Episode 811	Average Score: 0.33 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 812	Average Score: 0.33 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.01
+	Episode 813	Average Score: 0.33 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.60
+	Episode 814	Average Score: 0.33 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.25
+	Episode 815	Average Score: 0.33 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 816	Average Score: 0.33 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.56
+	Episode 817	Average Score: 0.33 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.64
+	Episode 818	Average Score: 0.33 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 819	Average Score: 0.33 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.88
+	Episode 820	Average Score: 0.33 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.57
+	Episode 821	Average Score: 0.33 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.72
+	Episode 822	Average Score: 0.34 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.64
+	Episode 823	Average Score: 0.34 	 current mean: 0.95	 Min:0.90	Max:0.99	Duration:8.98
+	Episode 824	Average Score: 0.34 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.76
+	Episode 825	Average Score: 0.34 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 826	Average Score: 0.34 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.99
+	Episode 827	Average Score: 0.35 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.66
+	Episode 828	Average Score: 0.35 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.22
+	Episode 829	Average Score: 0.35 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.03
+
+At episode 829 the current best 0.34 has been beaten by 0.35, so we save the model	Episode 830	Average Score: 0.35 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.23
+	Episode 831	Average Score: 0.35 	 current mean: 0.80	 Min:0.79	Max:0.80	Duration:7.58
+	Episode 832	Average Score: 0.35 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.39
+	Episode 833	Average Score: 0.35 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.48
+	Episode 834	Average Score: 0.35 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.24
+	Episode 835	Average Score: 0.34 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 836	Average Score: 0.34 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.71
+	Episode 837	Average Score: 0.34 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.46
+	Episode 838	Average Score: 0.34 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:3.05
+	Episode 839	Average Score: 0.34 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.63
+	Episode 840	Average Score: 0.34 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 841	Average Score: 0.35 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.74
+	Episode 842	Average Score: 0.35 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 843	Average Score: 0.34 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.57
+	Episode 844	Average Score: 0.34 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.68
+	Episode 845	Average Score: 0.34 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 846	Average Score: 0.34 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.28
+	Episode 847	Average Score: 0.34 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.21
+	Episode 848	Average Score: 0.34 	 current mean: 0.50	 Min:0.49	Max:0.50	Duration:4.97
+	Episode 849	Average Score: 0.35 	 current mean: 0.85	 Min:0.79	Max:0.90	Duration:8.30
+	Episode 850	Average Score: 0.36 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.48
+	Episode 851	Average Score: 0.36 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.16
+	Episode 852	Average Score: 0.38 	 current mean: 2.50	 Min:2.50	Max:2.50	Duration:23.82
+
+At episode 852 the current best 0.35 has been beaten by 0.38, so we save the model	Episode 853	Average Score: 0.40 	 current mean: 2.60	 Min:2.60	Max:2.60	Duration:23.76
+
+At episode 853 the current best 0.38 has been beaten by 0.40, so we save the model	Episode 854	Average Score: 0.42 	 current mean: 2.05	 Min:1.99	Max:2.10	Duration:18.58
+
+At episode 854 the current best 0.40 has been beaten by 0.42, so we save the model	Episode 855	Average Score: 0.42 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.25
+	Episode 856	Average Score: 0.42 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.38
+	Episode 857	Average Score: 0.43 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.00
+	Episode 858	Average Score: 0.42 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.16
+	Episode 859	Average Score: 0.45 	 current mean: 2.55	 Min:2.50	Max:2.60	Duration:23.88
+
+At episode 859 the current best 0.42 has been beaten by 0.45, so we save the model	Episode 860	Average Score: 0.45 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.01
+	Episode 861	Average Score: 0.46 	 current mean: 1.45	 Min:1.40	Max:1.49	Duration:14.39
+
+At episode 861 the current best 0.45 has been beaten by 0.46, so we save the model	Episode 862	Average Score: 0.46 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.68
+	Episode 863	Average Score: 0.46 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.11
+	Episode 864	Average Score: 0.46 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.82
+	Episode 865	Average Score: 0.47 	 current mean: 0.95	 Min:0.89	Max:1.00	Duration:9.14
+	Episode 866	Average Score: 0.47 	 current mean: 1.15	 Min:1.09	Max:1.20	Duration:10.87
+	Episode 867	Average Score: 0.47 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.72
+
+At episode 867 the current best 0.46 has been beaten by 0.47, so we save the model	Episode 868	Average Score: 0.47 	 current mean: 0.70	 Min:0.69	Max:0.70	Duration:6.68
+	Episode 869	Average Score: 0.48 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.96
+	Episode 870	Average Score: 0.48 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 871	Average Score: 0.47 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.90
+	Episode 872	Average Score: 0.47 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.13
+	Episode 873	Average Score: 0.46 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 874	Average Score: 0.46 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.59
+	Episode 875	Average Score: 0.46 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.78
+	Episode 876	Average Score: 0.46 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.88
+	Episode 877	Average Score: 0.44 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.59
+	Episode 878	Average Score: 0.46 	 current mean: 1.85	 Min:1.79	Max:1.90	Duration:17.52
+	Episode 879	Average Score: 0.46 	 current mean: 0.50	 Min:0.49	Max:0.50	Duration:4.78
+	Episode 880	Average Score: 0.46 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.61
+	Episode 881	Average Score: 0.46 	 current mean: 0.05	 Min:0.00	Max:0.09	Duration:0.77
+	Episode 882	Average Score: 0.46 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.36
+	Episode 883	Average Score: 0.45 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.05
+	Episode 884	Average Score: 0.45 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.70
+	Episode 885	Average Score: 0.45 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.60
+	Episode 886	Average Score: 0.43 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.97
+	Episode 887	Average Score: 0.43 	 current mean: 0.90	 Min:0.89	Max:0.90	Duration:8.54
+	Episode 888	Average Score: 0.43 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.16
+	Episode 889	Average Score: 0.43 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.59
+	Episode 890	Average Score: 0.43 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 891	Average Score: 0.43 	 current mean: 0.70	 Min:0.69	Max:0.70	Duration:6.63
+	Episode 892	Average Score: 0.43 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.62
+	Episode 893	Average Score: 0.43 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.70
+	Episode 894	Average Score: 0.43 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.68
+	Episode 895	Average Score: 0.42 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.63
+	Episode 896	Average Score: 0.42 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.40
+	Episode 897	Average Score: 0.42 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.31
+	Episode 898	Average Score: 0.42 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.46
+	Episode 899	Average Score: 0.42 	 current mean: 0.60	 Min:0.59	Max:0.60	Duration:5.74
+	Episode 900	Average Score: 0.43 	 current mean: 0.65	 Min:0.59	Max:0.70	Duration:6.61
+	Episode 901	Average Score: 0.45 	 current mean: 2.55	 Min:2.50	Max:2.60	Duration:23.59
+	Episode 902	Average Score: 0.45 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:0.92
+	Episode 903	Average Score: 0.44 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 904	Average Score: 0.44 	 current mean: 0.80	 Min:0.79	Max:0.80	Duration:7.71
+	Episode 905	Average Score: 0.44 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 906	Average Score: 0.46 	 current mean: 1.65	 Min:1.59	Max:1.70	Duration:15.40
+	Episode 907	Average Score: 0.45 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 908	Average Score: 0.45 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.85
+	Episode 909	Average Score: 0.45 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.28
+	Episode 910	Average Score: 0.44 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+	Episode 911	Average Score: 0.45 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.52
+	Episode 912	Average Score: 0.45 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.57
+	Episode 913	Average Score: 0.46 	 current mean: 1.55	 Min:1.49	Max:1.60	Duration:14.79
+	Episode 914	Average Score: 0.46 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.14
+	Episode 915	Average Score: 0.46 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 916	Average Score: 0.46 	 current mean: 0.20	 Min:0.19	Max:0.20	Duration:2.50
+	Episode 917	Average Score: 0.48 	 current mean: 1.80	 Min:1.79	Max:1.80	Duration:16.95
+	Episode 918	Average Score: 0.49 	 current mean: 0.95	 Min:0.89	Max:1.00	Duration:9.28
+
+At episode 918 the current best 0.47 has been beaten by 0.49, so we save the model	Episode 919	Average Score: 0.48 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.98
+	Episode 920	Average Score: 0.48 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.27
+	Episode 921	Average Score: 0.48 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.79
+	Episode 922	Average Score: 0.48 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.46
+	Episode 923	Average Score: 0.47 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.59
+	Episode 924	Average Score: 0.47 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 925	Average Score: 0.48 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.00
+	Episode 926	Average Score: 0.49 	 current mean: 2.40	 Min:2.39	Max:2.40	Duration:22.48
+	Episode 927	Average Score: 0.49 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.77
+	Episode 928	Average Score: 0.50 	 current mean: 0.65	 Min:0.59	Max:0.70	Duration:6.83
+	Episode 929	Average Score: 0.49 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.78
+	Episode 930	Average Score: 0.49 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+	Episode 931	Average Score: 0.48 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 932	Average Score: 0.48 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 933	Average Score: 0.48 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 934	Average Score: 0.50 	 current mean: 2.50	 Min:2.50	Max:2.50	Duration:24.16
+
+At episode 934 the current best 0.49 has been beaten by 0.50, so we save the model
+Environment solved in 934 episodes!	Episode 931	Average Score: 0.48 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.38
+	Episode 932	Average Score: 0.48 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+	Episode 933	Average Score: 0.48 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.24
+	Episode 934	Average Score: 0.50 	 current mean: 2.50	 Min:2.50	Max:2.50	Duration:24.16
+
+At episode 934 the current best 0.49 has been beaten by 0.50, so we save the model
+Environment solved in 934 episodes!	Episode 935	Average Score: 0.52 	 current mean: 1.35	 Min:1.29	Max:1.40	Duration:12.60
+
+At episode 935 the current best 0.50 has been beaten by 0.52, so we save the model
+Environment solved in 935 episodes!
+Environment solved in 935 episodes!	Episode 936	Average Score: 0.52 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.20
+
+Environment solved in 936 episodes!
+Environment solved in 935 episodes!	Episode 936	Average Score: 0.52 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.20
+
+Environment solved in 936 episodes!	Episode 937	Average Score: 0.51 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+
+Environment solved in 937 episodes!
+Environment solved in 935 episodes!	Episode 936	Average Score: 0.52 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.20
+
+Environment solved in 936 episodes!	Episode 937	Average Score: 0.51 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+
+Environment solved in 937 episodes!	Episode 938	Average Score: 0.52 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.55
+
+Environment solved in 938 episodes!
+Environment solved in 935 episodes!	Episode 936	Average Score: 0.52 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.20
+
+Environment solved in 936 episodes!	Episode 937	Average Score: 0.51 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+
+Environment solved in 937 episodes!	Episode 938	Average Score: 0.52 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.55
+
+Environment solved in 938 episodes!	Episode 939	Average Score: 0.52 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.35
+
+Environment solved in 939 episodes!
+Environment solved in 935 episodes!	Episode 936	Average Score: 0.52 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:2.20
+
+Environment solved in 936 episodes!	Episode 937	Average Score: 0.51 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.30
+
+Environment solved in 937 episodes!	Episode 938	Average Score: 0.52 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.55
+
+Environment solved in 938 episodes!	Episode 939	Average Score: 0.52 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.35
+
+Environment solved in 939 episodes!	Episode 940	Average Score: 0.52 	 current mean: 0.25	 Min:0.19	Max:0.30	Duration:2.67
+
+Environment solved in 940 episodes!
+Environment solved in 940 episodes!	Episode 941	Average Score: 0.52 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.93
+
+Environment solved in 941 episodes!
+Environment solved in 940 episodes!	Episode 941	Average Score: 0.52 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.93
+
+Environment solved in 941 episodes!	Episode 942	Average Score: 0.52 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+
+Environment solved in 942 episodes!
+Environment solved in 940 episodes!	Episode 941	Average Score: 0.52 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.93
+
+Environment solved in 941 episodes!	Episode 942	Average Score: 0.52 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+
+Environment solved in 942 episodes!	Episode 943	Average Score: 0.52 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.71
+
+Environment solved in 943 episodes!
+Environment solved in 940 episodes!	Episode 941	Average Score: 0.52 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.93
+
+Environment solved in 941 episodes!	Episode 942	Average Score: 0.52 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+
+Environment solved in 942 episodes!	Episode 943	Average Score: 0.52 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.71
+
+Environment solved in 943 episodes!	Episode 944	Average Score: 0.52 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+
+Environment solved in 944 episodes!
+Environment solved in 940 episodes!	Episode 941	Average Score: 0.52 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:3.93
+
+Environment solved in 941 episodes!	Episode 942	Average Score: 0.52 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:0.67
+
+Environment solved in 942 episodes!	Episode 943	Average Score: 0.52 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.71
+
+Environment solved in 943 episodes!	Episode 944	Average Score: 0.52 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.29
+
+Environment solved in 944 episodes!	Episode 945	Average Score: 0.53 	 current mean: 1.20	 Min:1.19	Max:1.20	Duration:12.29
+
+At episode 945 the current best 0.52 has been beaten by 0.53, so we save the model
+Environment solved in 945 episodes!
+Environment solved in 945 episodes!	Episode 946	Average Score: 0.53 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.67
+
+Environment solved in 946 episodes!
+Environment solved in 945 episodes!	Episode 946	Average Score: 0.53 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.67
+
+Environment solved in 946 episodes!	Episode 947	Average Score: 0.53 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.92
+
+Environment solved in 947 episodes!
+Environment solved in 945 episodes!	Episode 946	Average Score: 0.53 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.67
+
+Environment solved in 946 episodes!	Episode 947	Average Score: 0.53 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.92
+
+Environment solved in 947 episodes!	Episode 948	Average Score: 0.54 	 current mean: 1.35	 Min:1.29	Max:1.40	Duration:13.50
+
+At episode 948 the current best 0.53 has been beaten by 0.54, so we save the model
+Environment solved in 948 episodes!
+Environment solved in 945 episodes!	Episode 946	Average Score: 0.53 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.67
+
+Environment solved in 946 episodes!	Episode 947	Average Score: 0.53 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.92
+
+Environment solved in 947 episodes!	Episode 948	Average Score: 0.54 	 current mean: 1.35	 Min:1.29	Max:1.40	Duration:13.50
+
+At episode 948 the current best 0.53 has been beaten by 0.54, so we save the model
+Environment solved in 948 episodes!	Episode 949	Average Score: 0.54 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.52
+
+Environment solved in 949 episodes!
+Environment solved in 945 episodes!	Episode 946	Average Score: 0.53 	 current mean: 0.25	 Min:0.20	Max:0.29	Duration:2.67
+
+Environment solved in 946 episodes!	Episode 947	Average Score: 0.53 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.92
+
+Environment solved in 947 episodes!	Episode 948	Average Score: 0.54 	 current mean: 1.35	 Min:1.29	Max:1.40	Duration:13.50
+
+At episode 948 the current best 0.53 has been beaten by 0.54, so we save the model
+Environment solved in 948 episodes!	Episode 949	Average Score: 0.54 	 current mean: 0.55	 Min:0.49	Max:0.60	Duration:5.52
+
+Environment solved in 949 episodes!	Episode 950	Average Score: 0.54 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.39
+
+Environment solved in 950 episodes!
+Environment solved in 950 episodes!	Episode 951	Average Score: 0.53 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+
+Environment solved in 951 episodes!
+Environment solved in 950 episodes!	Episode 951	Average Score: 0.53 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+
+Environment solved in 951 episodes!	Episode 952	Average Score: 0.51 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.62
+
+Environment solved in 952 episodes!
+Environment solved in 950 episodes!	Episode 951	Average Score: 0.53 	 current mean: -0.00	 Min:-0.01	Max:0.00	Duration:0.37
+
+Environment solved in 951 episodes!	Episode 952	Average Score: 0.51 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:4.62
+
+Environment solved in 952 episodes!	Episode 953	Average Score: 0.49 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.62
+	Episode 954	Average Score: 0.47 	 current mean: 0.45	 Min:0.39	Max:0.50	Duration:5.09
+	Episode 955	Average Score: 0.48 	 current mean: 0.30	 Min:0.29	Max:0.30	Duration:3.46
+	Episode 956	Average Score: 0.47 	 current mean: 0.05	 Min:-0.01	Max:0.10	Duration:1.02
+	Episode 957	Average Score: 0.47 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.27
+	Episode 958	Average Score: 0.47 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.59
+	Episode 959	Average Score: 0.45 	 current mean: 0.15	 Min:0.09	Max:0.20	Duration:1.63
+	Episode 960	Average Score: 0.46 	 current mean: 1.15	 Min:1.09	Max:1.20	Duration:12.24
+	Episode 961	Average Score: 0.45 	 current mean: 0.40	 Min:0.39	Max:0.40	Duration:4.03
+	Episode 962	Average Score: 0.45 	 current mean: 0.10	 Min:0.09	Max:0.10	Duration:1.35
+	Episode 963	Average Score: 0.45 	 current mean: 0.35	 Min:0.29	Max:0.40	Duration:3.72
+	Episode 964	Average Score: 0.47 	 current mean: 2.50	 Min:2.50	Max:2.50	Duration:24.24
+	Episode 965	Average Score: 0.48 	 current mean: 2.55	 Min:2.50	Max:2.60	Duration:23.94

@@ -72,7 +72,7 @@ class TD3Actor(Actor):
 class Critic(nn.Module):
     """Critic (Value) Model."""
 
-    def __init__(self, state_size, action_size, seed, fcs1_units=512, fc2_units=256):
+    def __init__(self, state_size, action_size, seed, fcs1_units=512, fc2_units=256, use_batch_norm=True):
         """Initialize parameters and build model.
         Params
         ======
@@ -84,8 +84,10 @@ class Critic(nn.Module):
         """
         super(Critic, self).__init__()
         self.seed = torch.manual_seed(seed)
+        self.use_batch_norm = use_batch_norm
         self.fcs1 = nn.Linear(state_size, fcs1_units)
-        self.bn1 = nn.BatchNorm1d(fcs1_units)
+        if use_batch_norm:
+            self.bn1 = nn.BatchNorm1d(fcs1_units)
         self.fc2 = nn.Linear(fcs1_units + action_size, fc2_units)
         self.fc3 = nn.Linear(fc2_units, 1)
         self.reset_parameters()
@@ -97,7 +99,10 @@ class Critic(nn.Module):
 
     def forward(self, state, action):
         """Build a critic (value) network that maps (state, action) pairs -> Q-values."""
-        xs = F.relu(self.bn1(self.fcs1(state)))
+        xs = self.fcs1(state)
+        if self.use_batch_norm:
+            xs = self.bn1(xs)
+        xs = F.relu(xs)
         x = torch.cat((xs, action), dim=1)
         x = F.relu(self.fc2(x))
         return self.fc3(x)
@@ -106,7 +111,7 @@ class Critic(nn.Module):
 class TwinCritic(nn.Module):
     """TwinCritic (Value) Model."""
 
-    def __init__(self, state_size, action_size, seed, fc1_units=512, fc2_units=256):
+    def __init__(self, state_size, action_size, seed, fc1_units=512, fc2_units=256, use_batch_norm=True):
         """Initialize parameters and build model.
         Params
         ======
@@ -118,7 +123,7 @@ class TwinCritic(nn.Module):
         """
         super(TwinCritic, self).__init__()
         self.seed = torch.manual_seed(seed)
-
+        self.use_batch_norm = use_batch_norm
         # First Critic C1
         # All the layers (we need them as variables to reset each layer)
         self.c1_fc1 = nn.Linear(state_size + action_size, fc1_units)
@@ -172,4 +177,50 @@ class TwinCritic(nn.Module):
         """ To get only Q1 value"""
         sa = torch.cat((state, action), dim=1)
         q1 = self.critic1(sa)
+        return q1
+
+
+class TwinCritic_simple(nn.Module):
+    """TwinCritic (Value) Model."""
+
+    def __init__(self, state_size, action_size, seed, fc1_units=512, fc2_units=256, use_batch_norm=True):
+        """Initialize parameters and build model.
+        Params
+        ======
+            state_size (int): Dimension of each state
+            action_size (int): Dimension of each action
+            seed (int): Random seed
+            fcs1_units (int): Number of nodes in the first hidden layer
+            fc2_units (int): Number of nodes in the second hidden layer
+        """
+        super(TwinCritic_simple, self).__init__()
+        self.seed = torch.manual_seed(seed)
+        self.use_batch_norm = use_batch_norm
+        # First Critic C1
+        # All the layers (we need them as variables to reset each layer)
+        # Add them into a Sequential function
+        self.critic1 = Critic(state_size, action_size, seed, fcs1_units=fc1_units, fc2_units=fc2_units,
+                              use_batch_norm=use_batch_norm)
+
+        # Second Critic C2 ( Have to be the same architecture)
+        self.critic2 = Critic(state_size, action_size, seed, fcs1_units=fc1_units, fc2_units=fc2_units,
+                              use_batch_norm=use_batch_norm)
+
+        self.reset_parameters()
+
+    def reset_parameters(self):
+        # Reset C1
+        self.critic1.reset_parameters()
+        # Reset C2
+        self.critic2.reset_parameters()
+
+    def forward(self, state, action):
+        """Build a critic (value) network that maps (state, action) pairs -> Q-values."""
+        q1 = self.critic1(state, action)
+        q2 = self.critic2(state, action)
+        return q1, q2
+
+    def Q1(self, state, action):
+        """ To get only Q1 value"""
+        q1 = self.critic1(state, action)
         return q1
