@@ -35,8 +35,26 @@ The environment is considered solved, when the average (over 100 episodes) of th
 
     (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux_NoVis.zip) to obtain the "headless" version of the environment.  You will **not** be able to watch the agent without enabling a virtual screen, but you will be able to train the agent.  (_To watch the agent, you should follow the instructions to [enable a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md), and then download the environment for the **Linux** operating system above._)
 
-2. Place the file in the DRLND GitHub repository, in the `p3_collab-compet/` folder, and unzip (or decompress) the file. 
+2. Place the file you just downloaded in the `TD3_multi_agent_tennis/` folder, and unzip (or decompress) the file.
+3. Rename the downloaded folder to `Tennis`  
+4. Install environment
+    * pip install matplotlib
+    * pip install mlagents
+    * pip install numpy
+    * pip install tensorboardx
+    * pip install tensorboard
+    
+5. In the `TD3_multi_agent_tennis/` folder run command: `python train.py --eval_load_best=True` or `python train.py --eval_load_best=True --slow_and_pretty=True` for a slow representation 
 
-### Instructions
+### Improvement
 
-Follow the instructions in `Tennis.ipynb` to get started with training your own agent!  
+The following list is more of notes to myself. It contains further improvement i want to implement and test out:
+
+* N-step
+* Priority experience replay (Replay buffer)
+  * Look at the priority function in this paper https://arxiv.org/pdf/1707.08817.pdf
+
+These are not in order, but from experience, leave optimizing hyper-parameters to after modification.
+### Thanks to the following sites:
+* https://github.com/henry32144/drlnd-collab-compet
+    * Helped me realized how to share critics.

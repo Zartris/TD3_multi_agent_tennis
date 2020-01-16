@@ -6,15 +6,12 @@ class MultiAgent(AgentBase):
     def __init__(self,
                  agent_name: str,
                  agents: list,
-                 is_shared_memory: bool = False,
                  save_path: Path = None,
                  state_normalizer=RescaleNormalizer(),  # Todo: implement this
                  log_level: int = 0,  # 0 Equal to log everything
                  seed: int = 0):
         super().__init__(agent_name, save_path, state_normalizer, log_level, seed)
-
         self.agents = agents
-        self.is_shared_memory = is_shared_memory
 
     def act(self, states, add_noise=True):
         """Returns actions for given state as per agent."""
